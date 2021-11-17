@@ -10,12 +10,11 @@ use Illuminate\Support\Facades\Log;
 
 class StudentController extends Controller
 {
-    public function new($request)
+    public function new(Request $request)
     {
-        Log::info($request);
-        // $request->password=Hash::make($request->password);
-        // User::create($request->all());
-        return response()->json(['success'=>'Etudiant ajouté avec success']);
+        $request->password=Hash::make($request->password);
+        User::create($request->all());
+        return response('Etudiant ajouté avec success');
     }
 
     public function update($id)
@@ -25,8 +24,8 @@ class StudentController extends Controller
 
     public function delete($id)
     {
-        $student=User::find($id);
-        $student->delete();
-        return redirect()->back()->with("success","Student delete succesfully");
+        $user=User::find($id);
+        $user->delete();
+        return redirect()->back()->with("success","User delete succesfully");
     }
 }

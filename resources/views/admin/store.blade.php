@@ -82,8 +82,8 @@
 
 
   <h1 class="text-dark mt-3">Liste des administrateurs de la plateforme</h1>
-    <input class="m-3 myInput2" type="text" id="myInput" onkeyup="myFunction2()" placeholder="Rechercher par noms.." title="Type in a name">
-    <table class="table table-bordered table-sm m-3 myTable2" id="myTable">
+    <input class="m-3 myInput2" type="text" id="myInput1" onkeyup="myFunction2()" placeholder="Rechercher par noms.." title="Type in a name">
+    <table class="table table-bordered table-sm m-3 myTable1" id="myTable1">
       
     <thead>
         <tr class="header">
@@ -98,13 +98,13 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 <td>
-                    <button class="btn btn-circle btn-lg" title="Supprimer"><i class="fa fa-trash text-danger" aria-hidden="true"></i></button>
+                <a class="btn btn-circle btn-lg" title="Supprimer" onclick="return confirm('Cette action est irréversible. Voulez vous poursuivre ?');" href="{{route('delete_student',['id'=>$user->id])}}"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
                 </td>
             </tr>
     @empty
     @endforelse   
     </tbody>
-  </table
+</table>
 
 
 
@@ -120,7 +120,7 @@
             <div class="form-group row">
                 <label for="username" class="col-md-4 col-form-label text-md-right text-black">{{ __('Email') }}</label>
                 <div class="col-md-6">
-                    <input id="username" type="email" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">
+                    <input id="username" type="email" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required>
 
                     @error('username')
                     <span class="invalid-feedback" role="alert">
@@ -134,7 +134,7 @@
                 <label for="password" class="col-md-4 col-form-label text-md-right text-black">{{ __('Mot de passe') }}</label>
 
                 <div class="col-md-6">
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
 
                     @error('password')
                     <span class="invalid-feedback" role="alert">
@@ -146,7 +146,7 @@
             <div class="form-group row">
                 <label for="username" class="col-md-4 col-form-label text-md-right text-black">{{ __('Votre mot de passe') }}</label>
                 <div class="col-md-6">
-                    <input id="passwordV" type="password" class="form-control @error('passwordV') is-invalid @enderror" name="passwordV" value="{{ old('passwordV') }}" required autocomplete="passwordV">
+                    <input id="passwordV" type="password" class="form-control @error('passwordV') is-invalid @enderror" name="passwordV" value="{{ old('passwordV') }}" required>
 
                     @error('passwordV')
                     <span class="invalid-feedback" role="alert">
@@ -172,19 +172,20 @@
        {{ __('Ajouter un Etudiant') }}
        </div>
        <div class="card-body">   
-        <form class="user myform"method="POST">
-         
+        <form method="POST" class="user myform" action="{{route('addStudent')}}">
+        @csrf
+        
         <div class="form-group row">
             <div class="col-sm-6 mb-3 mb-sm-0">
                 <div class="mb-4">
-                    <input type="text" class="name form-control @error('name') is-invalid @enderror " name="name" value="{{ old('name') }}" required autocomplete="name" id="exampleFirstName" placeholder="{{ __('Nom complet') }}" name="first_name" />
+                    <input type="text" class="name form-control @error('name') is-invalid @enderror " name="name" value="{{ old('name') }}" required id="exampleFirstName" placeholder="{{ __('Nom complet') }}" name="first_name" />
                     
                         <span class="text-danger" role="alert">
                             <strong class="name_"></strong>
                         </span>
                 </div>
                 <div>
-                     <select class="form-control @error('entity') is-invalid @enderror entity" name="entity" value="{{old('entity')}}" id="entity" onautocomplete="entity">
+                     <select class="form-control @error('entity') is-invalid @enderror entity" name="entity" value="{{old('entity')}}" id="entity" >
                         filiere
                         <option value="GEI"> GEI</option>
                         <option value="GME"> GME</option>
@@ -199,14 +200,14 @@
 
             <div class="col-sm-6 mb-3 mb-sm-0">
                 <div class="mb-4">
-                      <input class="form-control @error('matricule') is-invalid @enderror matricule" name="matricule" value="{{ old('matricule') }}" required autocomplete="matricule" placeholder="{{__('N° Matricule')}}"/>
+                      <input class="form-control @error('matricule') is-invalid @enderror matricule" name="matricule" value="{{ old('matricule') }}" required placeholder="{{__('N° Matricule')}}"/>
                       
                         <span class="text-danger invalid" role="alert">
                                 <strong class="matricule_"></strong>
                             </span>
                 </div>
                 <div>
-                     <select class="form-control @error('Année d\'etude') is-invalid @enderror study_year" name="study_year" name="study_year" id="study_year" value="{{ old('study_year') }}" autocomplete="study_year">
+                     <select class="form-control @error('Année d\'etude') is-invalid @enderror study_year" name="study_year" name="study_year" id="study_year" value="{{ old('study_year') }}">
                         <option value="1"> 1ère Année</option>
                         <option value="2"> 2ème Année</option>
                         <option value="3"> 3ème Année</option>
@@ -219,21 +220,21 @@
        
         <div class="form-group row">
             <div class="col-sm-6">
-                <input type="email" class="form-control @error('email') is-invalid @enderror email" name="email" value="{{ old('email') }}" required autocomplete="email" aria-describedby="emailHelp" placeholder="{{ __('E-Mail Address') }}"/>
+                <input type="email" class="form-control @error('email') is-invalid @enderror email" name="email" value="{{ old('email') }}" required aria-describedby="emailHelp" placeholder="{{ __('E-Mail Address') }}"/>
                 
                     <span class="invalid text-danger" role="alert">
                             <strong class="email_"></strong>
-                        </span>
+                    </span>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0"> 
-               <input type="password" class="form-control @error('password') is-invalid @enderror password" name="password" required autocomplete="new-password" placeholder="{{ __('Mot de passe') }}"/> 
+               <input type="password" class="form-control @error('password') is-invalid @enderror password" name="password" required placeholder="{{ __('Mot de passe') }}"/> 
                
                 <span class="invalid text-danger" role="alert">
                     <strong class="password_"></strong>
                 </span>
          
             </div>
-           
+            <button  onclick="submit();" hidden></button>
         </div>
         
     </form>
@@ -257,7 +258,7 @@
 
 
 <style>
-    #myInput {
+    #myInput,#myInput1 {
   background-position: 10px 10px;
   background-repeat: no-repeat;
   width: 100%;
@@ -267,7 +268,7 @@
   margin-bottom: 12px;
 }
 
-#myTable {
+#myTable,#myTable1 {
   border-collapse: collapse;
   width: 100%;
   border: 1px solid #ddd;
@@ -278,21 +279,34 @@
   text-align: left;
   padding: 12px;
 }
+#myTable1 th, #myTable1 td {
+  text-align: left;
+  padding: 12px;
+}
 
 #myTable tr {
   border-bottom: 1px solid #ddd;
 }
+#myTable1 tr {
+  border-bottom: 1px solid #ddd;
+}
 
+#myTable1 tr.header, #myTable1 tr:hover {
+  background-color: #f1f1f1;
+}
 #myTable tr.header, #myTable tr:hover {
   background-color: #f1f1f1;
 }
 </style>
 <script>
+
+
+
 function myFunction() {
   var input, filter, table, tr, td, i, txtValue;
-  input = $(".myInput1");
+  input = document.getElementById('myInput');
   filter = input.value.toUpperCase();
-  table = $(".myTable1");
+  table = document.getElementById('myTable');
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
@@ -308,9 +322,9 @@ function myFunction() {
 }
 function myFunction2() {
   var input, filter, table, tr, td, i, txtValue;
-  input = $(".myInput2");
+  input = document.getElementById('myInput1');
   filter = input.value.toUpperCase();
-  table = $(".myTable2");
+  table = document.getElementById('myTable1');
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
@@ -328,8 +342,15 @@ function validateEmail(email) {
   const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
 }
+$('input').focusin(function(params) {
+  $('.name_').text('');
+  $('.password_').text('');
+  $('.email_').text('');
+  $('.matricule_').text('');
+});
 
 function addStudent(e) {
+
     var valid= true;
     if($('.name').val().length<3){
        $('.name_').text('veuillez entrer un vrai nom.');
@@ -351,36 +372,32 @@ function addStudent(e) {
         $(".matricule_").text("Veuillez entrer le N° matricule");
     }
   if(valid){
-  var data={nom: $('.name').val(),
-            email: $('.email').val(),
-            study_year: $('.study_year').val(),
-            password: $('.password').val(),
-            matricule: $('.matricule').val(),
-            entity: $('.entity').val()
-        };
-    
-    $.ajax({
-        type:'POST',
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        url: "{{route('addStudent')}}",
-        data: {
-            _token: "{{csrf_token()}}",
-            data: data      
-        },
-        success:function(response){
-            alert(response);
-          console.log(response);
-          if(response) {
-            $(".myform")[0].reset();
-          }
-        },
-        error: function(error) {
-            console.log(error);
-        }
-    });
+    $('.myform').submit();
+        // var data={nom: $('.name').val(),
+        //     email: $('.email').val(),
+        //     study_year: $('.study_year').val(),
+        //     password: $('.password').val(),
+        //     matricule: $('.matricule').val(),
+        //     entity: $('.entity').val()
+        // };
+    //     $.ajaxSetup({
+    //     headers: {
+    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //     }
+    //    });   
+    // $.ajax({
+    //       type: 'POST',
+    //       url: "{{route('addStudent')}}",
+    //       data: data ,    
+    //       success: function(data) {
+    //         alert(data)
+    //       },
+    //       error: function(error) {
+    //         alert(error);
+    //       }
+  
+    // });
   }
-  alert("invalid")
 
 }
 </script>
