@@ -1,14 +1,67 @@
 @extends('layouts.app')
 
 @section('content')
+
  <h3 class="text-dark mb-4 ml-3">Acceuil</h3>
-<header id="home" class="text-center">
-    <div>
+<header id="" class="text-center">
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+  </ol>
+  <div class="carousel-inner">
+
+ 
+        <div class="carousel-item active">
+        <img class="d-block w-100" src="{{asset('images/img7.jpg')}}" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                <h2 style="color:white">Tous les travaux de fin d'étude <br> à votre disposition.</h2>
+               <p><a href="#tfe" class="consult-btn">Consulter</a></p>
+                </div>
+        </div>
+        <div class="carousel-item ">
+        <img class="d-block w-100" src="{{asset('images/img3.jpg')}}" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                <h2 style="color:white">Vous êtes étudiant ? <br> Inscrivez vous pour le depôt de votre tfe</h2>
+                <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white" href="{{ route('register') }}"><span>{{ __("S'inscrire") }}</span></a></p>
+                </div>
+        </div>
+        <div class="carousel-item ">
+        <img class="d-block w-100" src="{{asset('images/img6.jpg')}}" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                <h2 style="color:white">Vous êtes étudiant, <br> Et vous avez déjà un compte, Connectez vous.</h2>
+                  <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white" href="{{ route('login') }}"><span>{{ __("S'identifier") }}</span></a></p>
+                </div>
+        </div>
+        <div class="carousel-item ">
+        <img class="d-block w-100" src="{{asset('images/img5.jpg')}}" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                <h2 style="color:white">Vous êtes déja connecté?<br> Déposé votre tfe.</h2>
+                  <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white" href="{{ route('tfe.create') }}"><span>{{ __("Déposer") }}</span></a></p>
+                </div>
+        </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+   <div>
         <p>
-            <h2 style="color:white">Tous les travaux de fin d'étude <br> à votre disposition.</h2>
+           
         </p>
-        <a href="#tfe" class="consult-btn">Consulter</a>
+        
     </div>
+
+
 </header>
 <div class="container" id="tfe">
     <div class="col">
@@ -16,12 +69,11 @@
          <div class="row">
              @if(count($tfes)>0) 
                 @include('layouts.sidebar')
-            @endif                  
+             @endif                  
          </div>
 
           <div class="row row-cols-md-2 row-col-sm-2"> 
         @forelse($tfes as $tfe)
-        @if($tfe->status==1)
             <div class="col">
                 <div class="card mb-4 shadow">    
                     <div class="card-body">
@@ -39,7 +91,7 @@
                     </div>
                 </div>    
             </div>  
-        @endif
+     
          @empty
              <div class="text-center">
                 <h1 style="font-size: 30px;color: black;">Aucun tfe disponibles pour le moment</h1>
@@ -55,4 +107,6 @@
             Copyright {{date('Y')}}
         </div>
 </footer>
+
+
 @stop

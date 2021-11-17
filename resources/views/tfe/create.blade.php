@@ -6,7 +6,7 @@
     <form method="POST" action="{{ route('tfe.store') }}" enctype="multipart/form-data">
         <h3 class="text-dark mb-4">Ajouter un tfe</h3>
         <div class="row mb-3">
-            <div class="col">
+            <div class="col" id="left">
                 <div class="card shadow">
                     <div class="card-header py-3" style="background-color: #4169e1;">
                         <p class=" m-0 font-weight-bold text-center" style="font-size: 20px;color: white;">Partie 1</p>
@@ -68,7 +68,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col" id='right'>
                         <div class="card shadow mb-3">
                             <div class="card-header py-3" style="background-color: #4169e1;">
                                 <p class="m-0 font-weight-bold text-center" style="font-size: 20px;color: white;">Parie 2</p>
@@ -173,3 +173,16 @@
 </footer>
 </div>
 @stop
+
+<style>
+   @media(max-width: 45rem){
+    .row{
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+    }
+    .col{
+        margin: 5px;
+    }
+   }
+</style>

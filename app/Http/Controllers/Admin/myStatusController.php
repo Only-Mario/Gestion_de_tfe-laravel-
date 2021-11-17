@@ -13,6 +13,7 @@ class myStatusController extends Controller
    //          ** id ** {
    //          tfe->id ou -1 pour tout les tfe
    //          -2 pour les tfe non validés à supprimer 
+  //            -3 pour supprimer un tfe
    //         }
    //          ** ststus **{
    //          0 pour un tfe en attente 
@@ -21,24 +22,32 @@ class myStatusController extends Controller
    //         }
    // *******************************************
     function index($id,$status){
-        if($id==-2){
-            $tfe=Tfe::where(['status'=>2])->get();
-            foreach($tfe as $one){
-              tfeController::destroy($one['id'],true);
-            }
-
-        }
-        else if($id==-1){
+        // faire la meme action sur les tfe en attentes
+        if($id==-1){
             $tfes=Tfe::where(['status'=>0])->get();
             foreach($tfes as $tfe){
                 $tfe->update(['status'=>$status]); 
             }
         }
-        else{
-        $tfe=Tfe::find($id);
-        $tfe->update(['status'=>$status]); 
+        // supprimer un tfe
+        else if ($status==-3) {
+            $tfe=Tfe::find($id);
+            tfeController::destroy($tfe->id,true);
         }
-        $tfes=Tfe::all();
+        // supprimer les tfe rejettés
+        else if($status==-2){
+            $tfes=Tfe::where(['status'=>2])->get();
+            foreach($tfes as $one){
+              tfeController::destroy($one['id'],true);
+            }
+
+        }
+ 
+        // valider un tfe ou le rejetter
+        else{
+            $tfe=Tfe::find($id);
+            $tfe->update(['status'=>$status]); 
+        }
         return redirect(route('dashboard'));
     }
 }

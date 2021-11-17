@@ -14,6 +14,8 @@ class AdminController extends Controller
 {
    
     public function index(){
+        flash()->overlay('You are now a Laracasts member!', 'Yay');
+
         return view('admin.dashboard');
     }
 }

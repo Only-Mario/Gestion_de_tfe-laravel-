@@ -30,13 +30,19 @@ class Tfe extends Model
         return $this->hasOne('App\Models\Document');
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    
 
     protected static function years(){
+
         $increment = 2000;
         $years = [];
 
         while ($increment <= date('Y')) {
-
             array_push($years, $increment);
             $increment++;
         }

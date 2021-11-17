@@ -24,17 +24,26 @@
                 </li>
                 @endif
                 @else
-                @if(Auth::user()->name!='Admin')
-                @if (Route::has('tfe.create'))
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="{{ route('tfe.create') }}"><i class="fas fa-user-circle"></i><span>{{ __("Ajouter un tfe") }}</span></a>
+                 @if(Auth::user()->is_admin)
+                 <li class="nav-item" role="presentation">
+                    <a class="nav-link" href="{{ route('dashboard') }}"><i class="fas fa-user-circle"></i><span>{{ __("Tableau de bord") }}</span></a>
                 </li>
+                 @endif
+                @if(!Auth::user()->is_admin)
+                @if(has_tfe()==null)
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="{{ route('tfe.create') }}"><i class="fas fa-user-circle"></i><span>{{ __("Ajouter un tfe") }}</span></a>
+                    </li>
+                @else
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="{{ route('tfe.show', has_tfe()->id) }}"><i class="fas fa-user-circle"></i><span>{{ __("Mon tfe") }}</span></a>
+                    </li>
                 @endif
                 <li class="nav-item">
                     <div class="dropdown nav-link"><i class="fas fa-user-circle"></i>
                         <span>
                             <div class="dropdown-content">
-                            <a class="dropdown-item" href="{{ route('profil',Auth::user()) }}">{{ Auth::user()->name}}</a>
+                            <a class="dropdown-item" href="{{ route('profil',has_tfe()->id) }}">{{ Auth::user()->name}}</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">

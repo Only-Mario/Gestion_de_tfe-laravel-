@@ -11,7 +11,7 @@
                 <button class="btn btn-primary" type="button" onclick="event.preventDefult; alert('Vous ne pouvez éditer votre profil');">
                     <a href="" style="color: white;">Editer le Profil</a>
                 </button>
-                @if($tfe!=null and $tfe->status!=1)
+                @if($tfe!=null and $tfe->status==0)
                 <button class="btn btn-primary" type="button" >
                     <a href="{{ route('editTfe',$tfe->id)}}" style="color: white;">Editer le Tfe</a></button>
                @endif 
@@ -58,11 +58,11 @@
 </div>  
 <!-- **********- -->
 @if($tfe!=null)
-<div class="row mb-3 text-center" style="margin-left: 5px">
+<div class="row mb-3 text-center">
     <div class="col">
 
         <div class="card shadow">
-            <div class="card-header py-3" style="background-color: #4169e1;">
+            <div class="card-header" style="background-color: #4169e1;">
                 <p class="m-0 font-weight-bold text-center" style="font-size: 20px;color: white;">Tfe infos 1</p>
             </div>
             <div class="card-body">
@@ -143,10 +143,17 @@
 @if($tfe==null)
 <div class="card shadow text-center mt-4">
     <div class="card-body">
-        <h1 style="font-size: 30px;color: red;text-decoration: underline;">Vous n'avez pas soumis votre tfe</h1>
+        <h1 style="" class="text-info">Vous n'avez pas soumis votre tfe</h1>
     </div>
 </div>
 @endif
 </div>
 </div>
 @endsection
+<style>
+   @media(max-width: 45rem){
+    .col{
+        margin: 5px;
+    }
+   }
+</style>

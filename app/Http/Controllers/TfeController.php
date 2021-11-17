@@ -5,10 +5,8 @@ use App\Http\Requests\TfeRequest;
 use App\Models\Document;
 use App\Models\Tfe;
 use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
 class TfeController extends Controller
@@ -34,6 +32,7 @@ class TfeController extends Controller
     public function store(TfeRequest $request){
 
 
+       if(!has_tfe()){
         $name = Document::getName($request);
         
         // store the file into directory
@@ -49,10 +48,16 @@ class TfeController extends Controller
     
         // store the tfe into DB
         $data = $request->all();
+        $data["user_id"]=Auth::user()->id;
         $data = Arr::add($data, 'document_id', $id);
-        Tfe::create($data);
-
-        return redirect(route('tfe.index'))->with('success', 'Tfe bien ajouté');
+        $tfe=Tfe::create($data);
+       
+       
+        return redirect(route('profil',['id'=>$tfe->id]));
+       }
+       else{
+        return redirect()->back()->with('error', 'Vous avez déjà un tfe');
+       }
     }
 
 
@@ -86,7 +91,6 @@ class TfeController extends Controller
         // $name = Document::name($request);
         // $path = $request->file('document')->storeAs('public/tfe_documents',$name);
         // $document->update(['name' => $name, 'path' => $path]);
-
         $tfe = Tfe::findOrFail($id);
         $tfe->update($request->all());
         return redirect(route('welcome'))->with('success', 'Tfe bien modifié !');

@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
   <link rel="stylesheet" href="{{asset('css/assets/fonts/fontawesome-all.min.css')}}">
   <link rel="stylesheet" type="text/css" href="css/assets/css/style.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +14,7 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ config('app.name', 'Laravel') }}</title>
+  <title>{{ config('app.name', 'INSTI | TFE') }}</title>
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -40,6 +41,9 @@
                 </div>
             </nav>
             <main class="justify-content">
+            <div class="container">
+        @include('flash::message')
+      </div>   
                 @yield('content')
             </main> 
         </div>
@@ -48,7 +52,7 @@
             <footer>
                 <div class="container">
                     <p class="text-dark text-center">
-                    &copy:Copyright {{ date('Y') }}
+                    instilokossa&copy:Copyright {{ date('Y') }}
                     &middot</p>
                 </div>
             </footer>
@@ -61,7 +65,6 @@
     <script src="css/assets/js/jquery.min.js"></script>
     <script src="css/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="css/assets/js/bs-init.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="{{asset('css/assets/js/theme.js')}}"></script>
 

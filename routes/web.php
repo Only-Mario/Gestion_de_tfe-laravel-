@@ -22,7 +22,6 @@ Route::get('/',["as"=>'welcome', 'uses'=>'App\Http\Controllers\TfeController@ind
 Auth::routes();
 
 Route::get('search', ['as'=>'search','uses'=>'App\Http\Controllers\SearchController@search']);
-+
 
 //****************** Middleware is_admin  **********************
 Route::group(['middleware'=>['is_admin','auth']], function () {
@@ -32,8 +31,12 @@ Route::get('/admin/changepassword',function(){
 })->name('changepasswordView');
 Route::post('/admin/otherPassword/{id}','App\Http\Controllers\passwordUpdateController@index')->name('passwordUpdate');
 
+
+
+Route::get('/admin/delete/student/{id}','App\Http\Controllers\Admin\StudentController@delete')->name('delete_student');
+
+
 Route::get('/admin/dashboard','App\Http\Controllers\Admin\TfeController@showDashboard')->name('dashboard');
-Route::get('/admin/home','App\Http\Controllers\Admin\TfeController@index')->name('admin.home');
 Route::get('/admin/dashboard/{id}/{status}','App\Http\Controllers\Admin\myStatusController@index')->name('status');
 Route::get('/admin/store','App\Http\Controllers\Admin\TfeController@student')->name('store');
 Route::post('/admin/addadmin',function(){
@@ -70,5 +73,7 @@ Route::get("/delete/{id}",'App\Http\Controllers\TfeController@destroy')->name('t
 
 });
 
+//**********Ajax***************/
+Route::post('/admin/add/student',["as"=>"addStudent", "uses"=>'App\Http\Controller\Admin\StudentController@new']);
 
 

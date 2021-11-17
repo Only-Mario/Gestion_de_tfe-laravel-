@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
- <h3 class="text-dark mb-4 ml-3">Log in</h3>
+ <h3 class="text-dark mb-4 ml-3">Se connecter</h3>
 <div class="container">
     <div class="card mb-4">
             <div class="card-body">
@@ -15,7 +15,7 @@
                             <div class="text-center">
                                 <h4 class="text-dark mb-4">Welcome Back!</h4>
                             </div>
-                            <form class="user form" method="POST" action="{{ route('login') }}">
+                            <form class="user form w-100" method="POST" action="{{ route('login') }}">
                                   @csrf
                                 <div class="form-group">
                                   <input id="exampleInputEmail" type="email" class="form-control form-control-user @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Enter Email Address...">

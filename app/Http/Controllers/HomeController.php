@@ -22,6 +22,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        session()->flash("sucess","Tfe create sucesfully");
+        return view('admin.dashboard');
     }
 }

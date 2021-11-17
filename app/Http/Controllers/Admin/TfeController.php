@@ -16,8 +16,9 @@ use Illuminate\Support\Facades\Storage;
 class TfeController extends Controller
 {
     public function student(){
-        $users=User::get();
-        return view('admin.store', compact('users'));
+        $students=User::where("is_admin","=",false)->get();
+        $admins=User::where("is_admin","=",true)->get();
+        return view('admin.store', compact('admins',"students"));
     }
 
     public function index(){
@@ -30,7 +31,6 @@ class TfeController extends Controller
         $tfes0 = Tfe::where(['status'=>0])->get();
         $tfes1 = Tfe::where(['status'=>1])->get();
         $tfes2 = Tfe::where(['status'=>2])->get();
-
         return view('admin.dashboard', compact('tfes0','tfes2','tfes1'));
     }
     

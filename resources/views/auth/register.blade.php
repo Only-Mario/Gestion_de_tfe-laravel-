@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h3 class="text-dark mb-4 ml-3">Creer un compte</h3>
+<h3 class="text-dark mb-4 ml-3">Créer un compte</h3>
 <div class="p-5">
     <div>
         <progress id="progressBar" hidden="true">
@@ -10,7 +10,7 @@
      <div class="card-header py-3" style="background-color: #4169e1;">
            <p class="m-0 font-weight-bold text-center" style="font-size: 20px;color: white;">Créer un compte</p>
        </div>
-    <div class="card-body">   
+      <div class="card-body">   
         <form class="user"method="POST" action="{{ route('register') }}">
           @csrf
         <div class="form-group row">
@@ -18,9 +18,9 @@
                 <div class="mb-4">
                     <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus id="exampleFirstName" placeholder="{{ __('Nom complet') }}" name="first_name" />
                      @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
                     @enderror
                 </div>
                 <div>
@@ -88,18 +88,20 @@
 
           </div>
         </div>
-        <button  style="background-color: #4169e1; font-size: 20px" class="btn btn-primary btn-block text-white btn-user" id="submit" type="submit" onclick="event.preventDefult(); document.getElementById('progressBar').hidden=false; setTimeout(()=>{
+        <button  style="background-color: #4169e1; font-size: 20px" class="btn btn-primary text-white" id="submit" type="submit" onclick="event.preventDefult(); document.getElementById('progressBar').hidden=false; setTimeout(()=>{
             document.getElementById('progressBar').hidden=true;
             document.getElementById('submit').submit();
         },5000)"> S'ncrire
         </button>
     </form>
-</div>
+   </div>
     <div
     class="text-center mb-3">
-    <a class="small" href="{{route('login')}}" style="font-size: 15px;text-decoration: underline;">dejà incrit? se connecter!
+    <a class="small btn" href="{{route('login')}}" style="font-size: 15px;text-decoration: underline;">dejà incrit? se connecter!
     </a>
    </div>
 </div>
 </div>
 @endsection
+
+
