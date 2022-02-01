@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>{{ config('app.name', 'Gestion des tfe') }}</title>
-    <link rel="stylesheet" href="{{asset('css/assets/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ secure_asset('css/assets/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="{{asset('css/assets/css/Navigation-Clean.css')}}">
-    <link rel="stylesheet" href="{{asset('css/assets/fonts/fontawesome-all.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/assets/css/styles.css')}}">
+    <link rel="stylesheet" href="{{ secure_asset('css/assets/css/Navigation-Clean.css')}}">
+    <link rel="stylesheet" href="{{ secure_asset('css/assets/fonts/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{ secure_asset('css/assets/css/styles.css')}}">
     <link rel="stylesheet" type="text/css" href="css/assets/css/style.css">
 </head>
 
@@ -94,7 +94,7 @@
                             <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->lieu_de_stage}}</label></div>
                             <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->maitre_memoire}}<br /></label></div>
                             <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->email_maitre_memoire}}</label></div>
-                            <div class="col align-content-center"> <a class="col-form align-content-center" href="{{ route('tfe.show', $tfe) }}"><img src="{{asset('images/pdf.png')}}" width="60px"></a></div>
+                            <div class="col align-content-center"> <a class="col-form align-content-center" href="{{ route('tfe.show', $tfe) }}"><img src="{{ secure_asset('images/pdf.png')}}" width="60px"></a></div>
                             <div class="col">
                                 <div class="row">
                                     <div class="col mb-4">
@@ -132,10 +132,10 @@
                             <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->lieu_de_stage}}</label></div>
                             <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->maitre_memoire}}<br /></label></div>
                             <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->email_maitre_memoire}}</label></div>
-                            <div class="col align-content-center"> <a class="col-form align-content-center" href="{{ route('tfe.show', $tfe) }}"><img src="{{asset('images/pdf.png')}}" width="60px"></a></div>
+                            <div class="col align-content-center"> <a class="col-form align-content-center" href="{{ route('tfe.show', $tfe) }}"><img src="{{ secure_asset('images/pdf.png')}}" width="60px"></a></div>
                             <div class="col">
                                 <div class="row">
-                                   <img src="{{asset('images/valider.jpg')}}" width="60px">
+                                   <img src="{{ secure_asset('images/valider.jpg')}}" width="60px">
                                 </div>
                             </div>
                         </div>
@@ -172,10 +172,10 @@
                             <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->lieu_de_stage}}</label></div>
                             <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->maitre_memoire}}<br /></label></div>
                             <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->email_maitre_memoire}}</label></div>
-                            <div class="col align-content-center"> <a class="col-form align-content-center" href="{{ route('tfe.show', $tfe) }}"><img src="{{asset('images/pdf.png')}}" width="60px"></a></div>
+                            <div class="col align-content-center"> <a class="col-form align-content-center" href="{{ route('tfe.show', $tfe) }}"><img src="{{ secure_asset('images/pdf.png')}}" width="60px"></a></div>
                             <div class="col">
                                 <div class="row">
-                                   <a href="{{route('status',['id'=>$tfe->id,'status'=>-3])}}" onclick="return confirm('Cette action est irréversible. Voulez vous poursuivre ?');" ><img src="{{asset('images/refuser.png')}}" width="60px"></a>
+                                   <a href="{{route('status',['id'=>$tfe->id,'status'=>-3])}}" onclick="return confirm('Cette action est irréversible. Voulez vous poursuivre ?');" ><img src="{{ secure_asset('images/refuser.png')}}" width="60px"></a>
                                 </div>
                             </div>
                         </div>
@@ -191,10 +191,10 @@
 <footer>
 
 </footer>
-<script src="{{asset('css/assets/js/jquery.min.js')}}"></script>
-<script src="{{asset('css/assets/bootstrap/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('css/assets/js/bs-init.js')}}"></script>
-<script src="{{asset('css/assets/js/index.js')}}"></script>
+<script src="{{ secure_asset('css/assets/js/jquery.min.js')}}"></script>
+<script src="{{ secure_asset('css/assets/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{ secure_asset('css/assets/js/bs-init.js')}}"></script>
+<script src="{{ secure_asset('css/assets/js/index.js')}}"></script>
 </body>
 
 </html>

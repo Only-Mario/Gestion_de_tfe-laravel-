@@ -6,7 +6,7 @@
         <!-- **********- -->
         <h3 class="text-dark mb-4-m-8">Profile</h3>
         <div class="row">
-           <div class="card-body text-center"><img class="rounded-circle mb-3 mt-4" src="{{asset('images/account.jpg')}}" width="160" height="160" />
+           <div class="card-body text-center"><img class="rounded-circle mb-3 mt-4" src="{{ secure_asset('images/account.jpg')}}" width="160" height="160" />
              <div class="mb-3">
                 <button class="btn btn-primary" type="button" onclick="event.preventDefult; alert('Vous ne pouvez éditer votre profil');">
                     <a href="" style="color: white;">Editer le Profil</a>

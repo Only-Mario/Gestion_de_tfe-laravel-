@@ -7,10 +7,10 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>{{ config('app.name', 'Gestion des tfe') }}</title>
 
-    <link rel="stylesheet" href="{{asset('css/assets/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ secure_asset('css/assets/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="{{asset('css/assets/css/Navigation-Clean.css')}}">
-    <link rel="stylesheet" href="{{asset('css/assets/fonts/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{ secure_asset('css/assets/css/Navigation-Clean.css')}}">
+    <link rel="stylesheet" href="{{ secure_asset('css/assets/fonts/fontawesome-all.min.css')}}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
@@ -248,10 +248,10 @@
     
 </div>
 <!-- ////////////////// -->
-<script src="{{asset('css/assets/js/jquery.min.js')}}"></script>
-<script src="{{asset('css/assets/bootstrap/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('css/assets/js/bs-init.js')}}"></script>
-<script src="{{asset('css/assets/js/index.js')}}"></script>
+<script src="{{ secure_asset('css/assets/js/jquery.min.js')}}"></script>
+<script src="{{ secure_asset('css/assets/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{ secure_asset('css/assets/js/bs-init.js')}}"></script>
+<script src="{{ secure_asset('css/assets/js/index.js')}}"></script>
 </body>
 
 </html>

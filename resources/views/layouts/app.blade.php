@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <link rel="stylesheet" href="{{asset('css/assets/bootstrap/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{ secure_asset('css/assets/bootstrap/css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
-  <link rel="stylesheet" href="{{asset('css/assets/fonts/fontawesome-all.min.css')}}">
+  <link rel="stylesheet" href="{{ secure_asset('css/assets/fonts/fontawesome-all.min.css')}}">
   <link rel="stylesheet" type="text/css" href="css/assets/css/style.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
@@ -16,8 +16,8 @@
 
   <title>{{ config('app.name', 'INSTI | TFE') }}</title>
   <!-- Styles -->
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+  <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ secure_asset('css/style.css') }}" rel="stylesheet">
   <style>
   .search-by-entity-items, .search-by-year-items{
     display: none;
@@ -59,14 +59,14 @@
         </div>
     </div>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/jquery.1.11.1.js') }}" defer></script>
-    <script src="{{ asset('js/index.js') }}" defer></script>
+    <script src="{{ secure_asset('js/app.js') }}" defer></script>
+    <script src="{{ secure_asset('js/jquery.1.11.1.js') }}" defer></script>
+    <script src="{{ secure_asset('js/index.js') }}" defer></script>
     <script src="css/assets/js/jquery.min.js"></script>
     <script src="css/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="css/assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
-    <script src="{{asset('css/assets/js/theme.js')}}"></script>
+    <script src="{{ secure_asset('css/assets/js/theme.js')}}"></script>
 
 </body>
 </html>
