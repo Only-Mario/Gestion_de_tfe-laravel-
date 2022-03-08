@@ -26,14 +26,25 @@
         <img class="d-block w-100" src="{{asset('images/img3.jpg')}}" alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
                 <h2 style="color:white">Vous êtes étudiant ? <br> Inscrivez vous pour le depôt de votre tfe</h2>
+                @if(Auth::user()!=null)
+
+                <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white" href="/"><span>{{ __("S'inscrire") }}</span></a></p>
+                @else
                 <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white" href="{{ route('register') }}"><span>{{ __("S'inscrire") }}</span></a></p>
+
+                @endif
                 </div>
         </div>
         <div class="carousel-item ">
         <img class="d-block w-100" src="{{asset('images/img6.jpg')}}" alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
                 <h2 style="color:white">Vous êtes étudiant, <br> Et vous avez déjà un compte, Connectez vous.</h2>
+                @if(Auth::user()!=null)
+                  <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white" href="/"><span>{{ __("S'identifier") }}</span></a></p>
+                  @else
                   <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white" href="{{ route('login') }}"><span>{{ __("S'identifier") }}</span></a></p>
+
+                  @endif
                 </div>
         </div>
         <div class="carousel-item ">

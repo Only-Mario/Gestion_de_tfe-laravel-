@@ -43,7 +43,12 @@
                     <div class="dropdown nav-link"><i class="fas fa-user-circle"></i>
                         <span>
                             <div class="dropdown-content">
-                            <a class="dropdown-item" href="{{ route('profil',has_tfe()->id) }}">{{ Auth::user()->name}}</a>
+                                @if(has_tfe()!=null)
+                                <a class="dropdown-item" href="{{ route('profil',has_tfe()->id) }}">{{ Auth::user()->name}}</a>
+                                @else 
+                                <a class="dropdown-item" href="{{ route('profil',-1) }}">{{ Auth::user()->name}}</a>
+
+                                @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
