@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Log;
 if(!function_exists("myglobal")){
             function myglobal(){
             $Filieres=filieres::all('nom');
-             return;     
+             return  $Filieres;     
       }
     }
      if(!function_exists("has_tfe")){

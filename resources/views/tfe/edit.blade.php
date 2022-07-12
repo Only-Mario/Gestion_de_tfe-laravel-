@@ -10,9 +10,9 @@
                  <p class="m-0 font-weight-bold text-center" style="font-size: 20px;color: white;">Modifier votre dossier</p>
                </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('updateTfe', $tfe) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('updateTfe')}}" enctype="multipart/form-data" id="form">
                         @csrf
-                        <input type="hidden" name="_method" value="PUT">
+                        <input type="hidden" name="tfe_id" value="{{$tfe->id}}">
                         <div class="form-group row">
                             <label for="theme" class="col-md-4 col-form-label text-md-right">{{ __('Thème') }}</label>
 
@@ -151,7 +151,7 @@
                             <label for="document" class="col-md-4 col-form-label text-md-right">{{ __('Document') }}</label>
 
                             <div class="col-md-6">
-                                <input id="document" type="file" class="form-control @error('document') is-invalid @enderror" name="document" value="{{ old('document') }}">
+                                <input id="document" type="file" class="form-control @error('document') is-invalid @enderror" name="document" value="{{ $doc->path }}">
 
                                 @error('document')
                                     <span class="invalid-feedback" role="alert">
@@ -161,21 +161,12 @@
                             </div>
                         </div>
 
-                        <div class="card-footer"  style="background-color: #4169e1;">
-                           <div class="row text-center">
-                               <div class="col">
-                                   <button class="btn btn-success" type="button">
-                                    <a style="color: white;" href="{{route('updateTfe',$tfe->id)}}">Sauvegarder</a>
-                                   </button>
-                               </div>
-                               <div class="col">
-                                   <button class="btn btn-danger" type="button">
-                                     <a style="color: white;" href="{{route('tfeDelete',$tfe->id)}}">Supprimer</a>
-                                    </button>
-                               </div>
-                           </div>
+                        <div class="center">
+                        <input type="submit" class="btn btn-success">Sauvegarder</input>
+
+                        <a style="color: white;" class="btn btn-danger" href="{{route('tfeDelete',$tfe->id)}}">Supprimer</a>
+                        </form>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>

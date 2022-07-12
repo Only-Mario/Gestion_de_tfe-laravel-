@@ -81,19 +81,37 @@ class TfeController extends Controller
     public function edit($id){
         $years = Tfe::years();       
         $tfe = Tfe::findOrFail($id);
-        return view('tfe.edit', compact('years', 'tfe'));
+        $doc=Document::findOrFail($tfe->document_id)->get();
+        return view('tfe.edit', compact('years', 'tfe',"doc"));
     }
 
 
-    public function update(TfeRequest $request, $id){
-        
-        // $document = Document::findOrFail($id);
-        // $name = Document::name($request);
-        // $path = $request->file('document')->storeAs('public/tfe_documents',$name);
-        // $document->update(['name' => $name, 'path' => $path]);
+    public function update(TfeRequest $request){
+        $id=$request->input("tfe_id");
         $tfe = Tfe::findOrFail($id);
+
+
+        ///
+        $name = Document::getName($request);
+        
+        // store the file into directory
+        $path = $request->file('document')->storeAs('public/tfe_documents',$name);
+
+        // store in file infos into the database
+         $document = Document::findOrFail($tfe->document_id);
+     
+         $document->update([
+            'name' => $name,
+            'path' => $path,
+        ]);
+
+        $id = Arr::last(Document::select('id')->get()->toArray())['id'];
+
+        ///////
+
+        
         $tfe->update($request->all());
-        return redirect(route('welcome'))->with('success', 'Tfe bien modifié !');
+        return redirect()->back()->with('success', 'Tfe bien modifié !');
     }
 
 

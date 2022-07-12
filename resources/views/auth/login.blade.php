@@ -13,7 +13,7 @@
                     <div class="col-lg-6 d-lg-flex">
                         <div class="p-5">
                             <div class="text-center">
-                                <h4 class="text-dark mb-4">Welcome Back!</h4>
+                                <h4 class="text-dark mb-4">Bienvenu</h4>
                             </div>
                             <form class="user form w-100" method="POST" action="{{ route('login') }}">
                                   @csrf
@@ -57,7 +57,7 @@
                 </div>
                 {{__("Vous n'avez pas un compte?")}}
                 <div class="text-center">
-                    <a class="small" href="{{route('register')}}" style="text-decoration: underline;">Create an Account!
+                    <a class="small" href="{{route('register')}}" style="text-decoration: underline;">S'inscrire
                     </a>
                 </div>
             </div>

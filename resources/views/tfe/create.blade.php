@@ -9,7 +9,7 @@
             <div class="col" id="left">
                 <div class="card shadow">
                     <div class="card-header py-3" style="background-color: #4169e1;">
-                        <p class=" m-0 font-weight-bold text-center" style="font-size: 20px;color: white;">Partie 1</p>
+                        <p class=" m-0 font-weight-bold text-center" style="font-size: 20px;color: white;">Informations essentielles</p>
                     </div>
                     <div class="card-body">
                           
@@ -24,7 +24,7 @@
                                 @enderror
                             </div>                  
                              <div class="form-group">
-                                <label for="auteurs"><strong>{{__('Auteur')}}</strong></label> <input id="auteurs" type="text" class="form-control @error('auteurs') is-invalid @enderror" name="auteurs" value="{{ old('auteurs')}}" >
+                                <label for="auteurs"><strong>{{__('Auteur (s)')}}</strong></label> <input id="auteurs" type="text" class="form-control @error('auteurs') is-invalid @enderror" name="auteurs" value="{{ old('auteurs')}}" >
                                 @error('auteurs')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -71,7 +71,7 @@
             <div class="col" id='right'>
                         <div class="card shadow mb-3">
                             <div class="card-header py-3" style="background-color: #4169e1;">
-                                <p class="m-0 font-weight-bold text-center" style="font-size: 20px;color: white;">Parie 2</p>
+                                <p class="m-0 font-weight-bold text-center" style="font-size: 20px;color: white;">Informations complémentaires</p>
                             </div>
                             <div class="card-body">
                                     <div class="form-row">

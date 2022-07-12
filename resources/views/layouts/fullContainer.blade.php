@@ -2,14 +2,14 @@
     <div class="col-lg-4">
         <div class="container-fluid d-flex flex-column p-0">
             <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-                <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+                <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-graduation-cap"></i></div>
                 <div class="sidebar-brand-text mx-3"><span>INSTI TFE</span></div>
             </a>
             <hr class="sidebar-divider my-0">
             <ul class="nav navbar-nav text-light" id="accordionSidebar">
                 @if (Route::has('welcome'))
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="{{ route('welcome') }}"><i class="fas fa-user-circle"></i><span>{{ __("Accueil") }}</span></a>
+                    <a class="nav-link" href="{{ route('welcome') }}"><i class="fas fa-home"></i><span>{{ __("Accueil") }}</span></a>
                 </li>
                 @endif                            
                 @guest
@@ -32,18 +32,23 @@
                 @if(!Auth::user()->is_admin)
                 @if(has_tfe()==null)
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" href="{{ route('tfe.create') }}"><i class="fas fa-user-circle"></i><span>{{ __("Ajouter un tfe") }}</span></a>
+                        <a class="nav-link" href="{{ route('tfe.create') }}"><i class="fas fa-file-upload"></i><span>{{ __("Ajouter un tfe") }}</span></a>
                     </li>
                 @else
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" href="{{ route('tfe.show', has_tfe()->id) }}"><i class="fas fa-user-circle"></i><span>{{ __("Mon tfe") }}</span></a>
+                        <a class="nav-link" href="{{ route('tfe.show', has_tfe()->id) }}"><i class="fas fa-book-reader"></i><span>{{ __("Mon tfe") }}</span></a>
                     </li>
                 @endif
                 <li class="nav-item">
                     <div class="dropdown nav-link"><i class="fas fa-user-circle"></i>
                         <span>
                             <div class="dropdown-content">
-                            <a class="dropdown-item" href="{{ route('profil',has_tfe()->id) }}">{{ Auth::user()->name}}</a>
+                                @if(has_tfe()!=null)
+                                <a class="dropdown-item" href="{{ route('profil',has_tfe()->id) }}">{{ Auth::user()->name}}</a>
+                                @else 
+                                <a class="dropdown-item" href="{{ route('profil',-1) }}">{{ Auth::user()->name}}</a>
+
+                                @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">

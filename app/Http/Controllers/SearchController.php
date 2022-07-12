@@ -11,11 +11,12 @@ class SearchController extends Controller
         $years = Tfe::years();
         $kw = $request->input('search'); 
         $tfes = [];
-
+    
+      if($kw!=null || $kw!=""){
         if (is_numeric($kw)) {
             $tfes = Tfe::searchByYear($kw)->get();
         }
-        elseif(str_starts_with($kw, '@_')){
+        else if(str_starts_with($kw, '@_')){
             $kw = trim($kw, '@_');
             $tfes = Tfe::searchByEntity($kw)->get();
         }
@@ -23,5 +24,8 @@ class SearchController extends Controller
             $tfes = Tfe::searchByTheme($kw)->get();
         }
         return view('search', compact('tfes', 'years', 'kw'));
+    }else                                 {
+        return view('search', compact('tfes', 'years', 'kw'));
+    }
     }
 }

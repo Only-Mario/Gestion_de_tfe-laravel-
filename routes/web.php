@@ -68,7 +68,9 @@ Route::group(['middleware'=>'auth'], function () {
 Route::resource('tfe',"App\Http\Controllers\TfeController"); 
 Route::get("/profil/{id}",'App\Http\Controllers\profilController@index')->name('profil');
 Route::get("/edit/{id}",'App\Http\Controllers\TfeController@edit')->name('editTfe');
-Route::get("/update/{id}",'App\Http\Controllers\TfeController@update')->name('updateTfe');
+
+Route::post("/update/",'App\Http\Controllers\TfeController@update')->name('updateTfe');
+
 Route::get("/delete/{id}",'App\Http\Controllers\TfeController@destroy')->name('tfeDelete');
 
 });
