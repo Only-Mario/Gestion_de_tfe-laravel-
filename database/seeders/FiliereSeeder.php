@@ -21,7 +21,6 @@ class FiliereSeeder extends Seeder
             ['nom' => 'MS', 'description' => ' Maintenance des Systèmes'],
             ['nom' => 'GE', 'description' => ' Génie Energétique'],
             ['nom' => 'GMP', 'description' => ' Génie Mécanique et Productique'],
-            // Ajoutez d'autres filières ici
         ];
 
         foreach ($filieres as $filiere) {
