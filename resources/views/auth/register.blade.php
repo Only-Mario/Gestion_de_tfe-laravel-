@@ -30,7 +30,7 @@
                                     value="{{ old('entity') }}" id="entity" onautocomplete="entity">
                                     filiere
                                     @foreach ($filieres as $filiere)
-                                        <option value="{{ $filiere->id }}">{{ $filiere->description }} ({{ $filiere->nom }})</option>
+                                        <option value="{{ $filiere->id }}">{{ $filiere->nom }}</option>
                                     @endforeach
                                 </select>
 
@@ -105,7 +105,7 @@
                         onclick="event.preventDefult(); document.getElementById('progressBar').hidden=false; setTimeout(()=>{
             document.getElementById('progressBar').hidden=true;
             document.getElementById('submit').submit();
-        },5000)"> S'incrire
+        },5000)"> S'ncrire
                     </button>
                 </form>
             </div>
