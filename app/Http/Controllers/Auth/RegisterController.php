@@ -10,7 +10,6 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Filiere;
 
 class RegisterController extends Controller
 {
@@ -25,14 +24,14 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+     use RegistersUsers;
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
     ///------------------------------------------------
-
+    
 
     ///------------------------------------------------
     protected $redirectTo = RouteServiceProvider::HOME;
@@ -93,15 +92,10 @@ class RegisterController extends Controller
         User::create([
             'email' => $request->username,
             'password' => Hash::make($request->password),
-            'name' => "Admin",
-            'is_admin' => true,
+            'name'=>"Admin",
+            'is_admin'=>true,
         ]);
 
         return redirect(route('store'));
-    }
-    public function showRegistrationForm()
-    {
-        $filieres = Filiere::all();
-        return view('auth.register', compact('filieres'));
     }
 }

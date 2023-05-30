@@ -13,11 +13,11 @@ class CreateAdmin extends Seeder
      */
     public function run()
     {
-        $user=[
-            'name'=>'Admin',
-            'password'=>bcrypt('institfeadmin'),
-            'email'=>'institfeadmin@gmail.com',
-            'is_admin'=>true,
+         $user=[
+           'name'=>'Admin',
+           'password'=>bcrypt('institfeadmin'),
+           'email'=>'institfeadmin@gmail.com',
+           'is_admin'=>true,
         ];
         User::create($user);
     }
