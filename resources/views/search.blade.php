@@ -21,6 +21,7 @@
                     </h5>
                 </p>
                 @endif
+
                 @empty
                 <p>
                     Aucun résultat trouvé
