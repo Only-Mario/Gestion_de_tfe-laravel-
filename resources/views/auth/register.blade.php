@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3 class="text-dark mb-4 ml-3">Créer un compte</h3>
     <div class="p-5">
         <div>
             <progress id="progressBar" hidden="true">
@@ -30,7 +29,9 @@
                                     value="{{ old('entity') }}" id="entity" onautocomplete="entity">
                                     filiere
                                     @foreach ($filieres as $filiere)
-                                        <option value="{{ $filiere->id }}">{{ $filiere->description }} ({{ $filiere->nom }})</option>
+                                        <option value="{{ $filiere->id }}">{{ $filiere->description }}
+                                            ({{ $filiere->nom }})
+                                        </option>
                                     @endforeach
                                 </select>
 
@@ -85,7 +86,7 @@
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <input type="password" class="form-control @error('password') is-invalid @enderror"
                                 name="password" required autocomplete="new-password"
-                                placeholder="{{ __('Mot de passe') }}" />
+                                placeholder="{{ __('Mots de passe') }}" />
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -95,7 +96,7 @@
                         <div class="col-sm-6">
 
                             <input type="password" class="form-control" id="password-confirm"
-                                placeholder="Mot de passe (confirmer)" name="password_confirmation"
+                                placeholder="Mots de passe (confirmer)" name="password_confirmation"
                                 autocomplete="new-password" />
 
                         </div>
@@ -105,13 +106,13 @@
                         onclick="event.preventDefult(); document.getElementById('progressBar').hidden=false; setTimeout(()=>{
             document.getElementById('progressBar').hidden=true;
             document.getElementById('submit').submit();
-        },5000)"> S'incrire
+        },5000)"> S'inscrire
                     </button>
                 </form>
             </div>
             <div class="text-center mb-3">
-                <a class="small btn" href="{{ route('login') }}" style="font-size: 15px;text-decoration: underline;">dejà
-                    incrit? se connecter!
+                <a class="small btn" href="{{ route('login') }}" style="font-size: 15px; text-decoration: underline;">Déjà
+                    inscrit? Se connecter!
                 </a>
             </div>
         </div>

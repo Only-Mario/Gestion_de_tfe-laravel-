@@ -61,7 +61,8 @@
                                             name="groupe_pedagogique" id="entity"
                                             value="{{ old('groupe_pedagogique') }}">
                                             @foreach ($filieres as $filiere)
-                                                <option value="{{ $filiere->id }}">{{ $filiere->description }} ({{ $filiere->nom }}) </option>
+                                                <option value="{{ $filiere->id }}">{{ $filiere->description }}
+                                                    ({{ $filiere->nom }}) </option>
                                             @endforeach
                                         </select>
                                         @error('groupe_pedagogique')
@@ -187,7 +188,9 @@
 @section('footer')
     <footer>
         <div class="container">
-            Copyright {{ date('Y') }}
+            <p class="text-dark text-center">
+                INSTI &copy :Tous droits réservés {{ date('Y') }}
+                &middot</p>
         </div>
     </footer>
     </div>
