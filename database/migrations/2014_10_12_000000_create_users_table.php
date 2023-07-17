@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean('is_admin')->nullable()->default(false);
             $table->string('password');
-            $table->integer('matricule')->unique()->nullable();
+            $table->text('matricule')->unique()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

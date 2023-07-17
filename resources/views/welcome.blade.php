@@ -75,7 +75,7 @@
                 @endif
             </div>
 
-            <div class="row row-cols-md-2 row-col-sm-2">
+            <div class="row ">
                 @forelse($tfes as $tfe)
                     <div class="col">
                         <div class="card shadow">
