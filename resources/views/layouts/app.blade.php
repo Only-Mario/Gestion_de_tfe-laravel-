@@ -58,7 +58,7 @@
                 <footer>
                     <div class="container">
                         <p class="text-dark text-center">
-                            INSTI &copy :Tous droits réservés {{ date('Y') }}
+                            INSTI &copy Tous droits réservés {{ date('Y') }}
                             &middot</p>
                     </div>
                 </footer>

@@ -27,9 +27,8 @@
                             <div>
                                 <select class="form-control @error('entity') is-invalid @enderror" name="entity"
                                     value="{{ old('entity') }}" id="entity" onautocomplete="entity">
-                                    filiere
                                     @foreach ($filieres as $filiere)
-                                        <option value="{{ $filiere->id }}">{{ $filiere->description }}
+                                        <option value="{{ $filiere->nom }}">{{ $filiere->description }}
                                             ({{ $filiere->nom }})
                                         </option>
                                     @endforeach

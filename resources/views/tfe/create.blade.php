@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <form method="POST" action="{{ route('tfe.store') }}" enctype="multipart/form-data">
-            <h3 class="text-dark mb-4">Ajouter un tfe</h3>
+            <h3 class="text-dark mb-4">Ajouter un TFE</h3>
             <div class="row mb-3">
                 <div class="col" id="left">
                     <div class="card shadow">
@@ -61,8 +61,9 @@
                                             name="groupe_pedagogique" id="entity"
                                             value="{{ old('groupe_pedagogique') }}">
                                             @foreach ($filieres as $filiere)
-                                                <option value="{{ $filiere->id }}">{{ $filiere->description }}
-                                                    ({{ $filiere->nom }}) </option>
+                                            <option value="{{ $filiere->nom }}">{{ $filiere->description }}
+                                                ({{ $filiere->nom }})
+                                            </option>
                                             @endforeach
                                         </select>
                                         @error('groupe_pedagogique')

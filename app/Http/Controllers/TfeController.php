@@ -18,7 +18,8 @@ class TfeController extends Controller
     public function index()
     {
         $years = Tfe::years();
-        $tfes = Tfe::orderByDate()->get();
+        //$tfes = Tfe::orderByDate()->get();
+        $tfes = Tfe::orderBy('created_at', 'desc')->take(5)->get();
         return view('welcome', compact('tfes', 'years'));
     }
 

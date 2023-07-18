@@ -96,9 +96,9 @@ class RegisterController extends Controller
             'name' => "Admin",
             'is_admin' => true,
         ]);
-
         return redirect(route('store'));
     }
+
     public function showRegistrationForm()
     {
         $filieres = Filiere::all();

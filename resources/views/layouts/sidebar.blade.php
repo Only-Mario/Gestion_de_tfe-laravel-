@@ -26,9 +26,11 @@
     <form action="{{ route('search') }}" id="form4" method="get">
         <select class="form-control" name="search" id="search" >
             <option value="@_GEI"> Génie Electrique et Informatique (GEI)</option>
-            <option value="@_GME"> Génie Electrique et Informatique (GEI)</option>
-            <option value="@_GC"> Génie Civil (GC)</option>
-        </select>               
+            <option value="@_GC"> Génie Civi (GC)</option>
+            <option value="@_MS"> Maintenance des Systèmes (MS)</option>
+            <option value="@_GE"> Génie Energétique (GE)</option>
+            <option value="@_GMP"> Génie Mécanique et Productique (GMP)</option>
+        </select>            
     </form>                 
 </div>
 <div class="col">

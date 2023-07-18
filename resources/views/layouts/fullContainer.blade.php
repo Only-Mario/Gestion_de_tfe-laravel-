@@ -47,6 +47,10 @@
                             </li>
                         @endif
                         <li class="nav-item">
+                            <a class="nav-link" href=""><i
+                                class="fas fa-user-circle"></i><span> Liste des rapports </span></a>
+                        </li>
+                        <li class="nav-item">
                             <div class="dropdown nav-link"><i class="fas fa-user-circle"></i>
                                 <span>
                                     <div class="dropdown-content">
@@ -64,7 +68,6 @@
                                         </a>
                                     </div>
                                 </span>Mon profil
-
                             </div>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf

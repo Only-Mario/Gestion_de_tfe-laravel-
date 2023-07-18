@@ -2,10 +2,16 @@
 
 @section('content')
 
-    <h3 class="text-dark mb-4 ml-3">Acceuil</h3>
-    
+    <h3 class="text-dark mb-1 ml-3">Acceuil</h3>
 
+    <!--
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img class="d-block w-100" src="{{ asset('images/img7.jpg') }}" alt="1er slide">
@@ -14,7 +20,32 @@
                         <p><a href="#tfe" class="consult-btn">Consulter</a></p>
                     </div>
                 </div>
-            
+                <div class="carousel-item ">
+                    <img class="d-block w-100" src="{{ asset('images/img3.jpg') }}" alt="2e slide" style="height: 95%; background-position: center; background-repeat: no-repeat; background-size: cover; position: relative;">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2 style="color:white">Vous êtes étudiant ? <br> Inscrivez vous pour le depôt de votre tfe</h2>
+                        @if (Auth::user() != null)
+                            <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white"
+                                                                href="/"><span>{{ __("S'inscrire") }}</span></a></p>
+                        @else
+                            <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white"
+                                                                href="{{ route('register') }}"><span>{{ __("S'inscrire") }}</span></a></p>
+                            @endif
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item ">
+                                                <img class="d-block w-100" src="{{ asset('images/img6.jpg') }}" alt="3e slide">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h2 style="color:white">Vous êtes étudiant, <br> Et vous avez déjà un compte, Connectez vous.</h2>
+                                                    @if (Auth::user() != null)
+                            <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white"
+                                                                href="/"><span>{{ __("S'identifier") }}</span></a></p>
+                        @else
+                            <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white"
+                                                                href="{{ route('login') }}"><span>{{ __("S'identifier") }}</span></a></p>
+                            @endif
+                    </div>
+                </div>
                 <div class="carousel-item ">
                     <img class="d-block w-100" src="{{ asset('images/img5.jpg') }}" alt="4e slide">
                     <div class="carousel-caption d-none d-md-block">
@@ -24,12 +55,19 @@
                     </div>
                 </div>
             </div>
-            
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
- 
+    -->
     <div class="container" id="tfe">
         <div class="col">
-            <h1 class="text-center text-dark mb-4" style="font-style: normal;font-family: bold;">Les derniers tfes publiés
+            <h1 class="text-center text-dark mb-4" style="font-style: normal;font-family: bold;">Les derniers rapports publiés
             </h1>
             <div class="row">
                 @if (count($tfes) > 0)
@@ -38,8 +76,8 @@
             </div>
 
             <div class="row ">
-                @forelse($tfes as $tfe)
-                    <div class="col">
+                @forelse($tfes->take(5) as $tfe)
+                    <div class="col-12 pb-3">
                         <div class="card shadow">
                             <div class="card-body">
                                 <div class="row align-items-center">
@@ -58,10 +96,9 @@
                             </div>
                         </div>
                     </div>
-
                 @empty
                     <div class="text-center">
-                        <h1 style="font-size: 30px;color: black;">Aucun tfe disponibles pour le moment</h1>
+                        <h1 style="font-size: 30px;color: black;">Aucun rapport disponibles pour le moment</h1>
                     </div>
                 @endforelse
             </div>

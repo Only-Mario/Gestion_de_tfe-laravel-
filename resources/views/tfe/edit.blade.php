@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="fluid-container">
-        <h3 class="text-dark px-3">Modifier le TFE</h3>
+        <h3 class="text-dark px-3">Édition des informations sur le rapport</h3>
         <div class="row justify-content-center">
             <div class="col-md-8 mb-4">
                 <div class="card">
@@ -76,11 +76,12 @@
                                 <div class="col-md-6">
                                     <select class="form-control @error('groupe_pedagogique') is-invalid @enderror"
                                         name="groupe_pedagogique" id="entity" value="{{ $tfe->groupe_pedagogique }}">
-                                    @foreach ($filieres as $filiere)
-                                        <option value="{{ $filiere->id }}">{{ $filiere->description }}
-                                            ({{ $filiere->nom }})
-                                        </option>
-                                    @endforeach
+                                        <option value="GEI"> Génie Electrique et Informatique (GEI)</option>
+                                        <option value="GC"> Génie Civi (GC)</option>
+                                        <option value="MS"> Maintenance des Systèmes (MS)</option>
+                                        <option value="GE"> Génie Energétique (GE)</option>
+                                        <option value="GMP"> Génie Mécanique et Productique (GMP)</option>
+                                    </select>
                                 </select>
 
                                     @error('groupe_pedagogique')

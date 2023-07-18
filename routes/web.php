@@ -63,7 +63,6 @@ Route::post('/admin/addadmin',function(){
 //************************************************************
 
 
-
 Route::group(['middleware'=>'auth'], function () {
 Route::resource('tfe',"App\Http\Controllers\TfeController"); 
 Route::get("/profil/{id}",'App\Http\Controllers\profilController@index')->name('profil');
