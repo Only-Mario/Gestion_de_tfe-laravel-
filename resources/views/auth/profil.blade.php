@@ -4,7 +4,7 @@
     <div>
         <div class="container-fluid">
             <!-- **********- -->
-            <h3 class="text-dark mb-4-m-8">Profile</h3>
+            <h3 class="text-dark mb-4-m-8"> Profil </h3>
             <div class="row">
                 <div class="card-body text-center"><img class="rounded-circle mb-3 mt-4"
                         src="{{ asset('images/account.jpg') }}" width="160" height="160" />

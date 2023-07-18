@@ -6,12 +6,6 @@
     
 
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-            </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img class="d-block w-100" src="{{ asset('images/img7.jpg') }}" alt="1er slide">
@@ -20,32 +14,7 @@
                         <p><a href="#tfe" class="consult-btn">Consulter</a></p>
                     </div>
                 </div>
-                <div class="carousel-item ">
-                    <img class="d-block w-100" src="{{ asset('images/img3.jpg') }}" alt="2e slide" style="height: 95%; background-position: center; background-repeat: no-repeat; background-size: cover; position: relative;">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h2 style="color:white">Vous êtes étudiant ? <br> Inscrivez vous pour le depôt de votre tfe</h2>
-                        @if (Auth::user() != null)
-                            <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white"
-                                    href="/"><span>{{ __("S'inscrire") }}</span></a></p>
-                        @else
-                            <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white"
-                                    href="{{ route('register') }}"><span>{{ __("S'inscrire") }}</span></a></p>
-                        @endif
-                    </div>
-                </div>
-                <div class="carousel-item ">
-                    <img class="d-block w-100" src="{{ asset('images/img6.jpg') }}" alt="3e slide">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h2 style="color:white">Vous êtes étudiant, <br> Et vous avez déjà un compte, Connectez vous.</h2>
-                        @if (Auth::user() != null)
-                            <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white"
-                                    href="/"><span>{{ __("S'identifier") }}</span></a></p>
-                        @else
-                            <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white"
-                                    href="{{ route('login') }}"><span>{{ __("S'identifier") }}</span></a></p>
-                        @endif
-                    </div>
-                </div>
+            
                 <div class="carousel-item ">
                     <img class="d-block w-100" src="{{ asset('images/img5.jpg') }}" alt="4e slide">
                     <div class="carousel-caption d-none d-md-block">
@@ -55,14 +24,7 @@
                     </div>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            
         </div>
  
     <div class="container" id="tfe">
