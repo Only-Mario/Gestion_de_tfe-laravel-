@@ -193,6 +193,20 @@
                                     @enderror
                                 </div>
                             </div>
+                            
+                     <div class="row">
+                        <div class="form-group col">
+                        <label for="address"><strong>Resumé</strong></label>
+
+                        <textarea name="resume" id="resume" class="form-control @error('document') is-invalid @enderror" cols="30" rows="10">{{$tfe->resume}}</textarea>
+
+                        @error('resume')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                        </div>
+                    </div>
 
                             <div class="card-footer" style="background-color: #4169e1;">
                                 <div class="row text-center">

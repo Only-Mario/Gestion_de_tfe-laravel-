@@ -23,6 +23,7 @@ class Tfe extends Model
         'document_id',
         'user_id',
         'status',
+        'resume'
     ];
 
     public function document()

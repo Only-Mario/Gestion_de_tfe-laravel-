@@ -60,7 +60,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'matricule' => ['alpha_num', 'min:6'],
+            "matricule" => ["required",'string', 'min:6'],
         ]);
     }
 
@@ -96,9 +96,9 @@ class RegisterController extends Controller
             'name' => "Admin",
             'is_admin' => true,
         ]);
+
         return redirect(route('store'));
     }
-
     public function showRegistrationForm()
     {
         $filieres = Filiere::all();

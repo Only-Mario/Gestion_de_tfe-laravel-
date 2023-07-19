@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Filiere;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,5 +25,4 @@ class HomeController extends Controller
         session()->flash("sucess","Tfe create sucesfully");
         return view('admin.dashboard');
     }
-
 }
