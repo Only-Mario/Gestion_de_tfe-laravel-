@@ -32,8 +32,8 @@ class TfeRequest extends FormRequest
             'email_tuteur' => ['required', 'string', 'email', 'max:255'],
             'email_maitre_memoire' => ['required', 'string', 'email', 'max:255'],
             'maitre_memoire' => ['required','string', 'max:255'],
-            'resume' => ['required','text'],
-            "document" => ['required','mimes:pdf', 'max:2048'],
+            'resume' => 'required|string|max:1000',
+            "document" => ['required','mimes:pdf', 'max:20480'],
             
         ];
     }

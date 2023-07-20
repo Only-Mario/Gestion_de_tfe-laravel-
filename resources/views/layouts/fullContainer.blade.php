@@ -41,12 +41,22 @@
                                         class="fas fa-user-circle"></i><span>{{ __('Ajouter un tfe') }}</span></a>
                             </li>
                         @else
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link" href="{{ route('tfe.show', has_tfe()->id) }}"><i
-                                        class="fas fa-user-circle"></i><span>{{ __('Mon tfe') }}</span></a>
-                            </li>
+                        <li class="nav-item" role="presentation">
+                            <div class="dropdown">
+                                <div class="dropdown-toggle nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user-circle"></i> {{ __('Mon TFE') }}
+                                </div>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="{{ route('tfe.show', has_tfe()->id) }}">Voir le rapport</a>
+                                    <a class="dropdown-item" href="{{ route('editTfe', $tfe->id) }}">Modifier les informations</a>
+                                    <a class="dropdown-item" href="#">Imprimer la preuve de mise en ligne</a>
+                                </div>
+                            </div>
+                        </li>
                         @endif
                         <li class="nav-item">
+                            <a class="nav-link" href="#"><i
+                                class="fas fa-user-circle"></i><span>{{ __('Liste des rapports') }}</span></a>
                         </li>
                         <li class="nav-item">
                             <div class="dropdown nav-link"><i class="fas fa-user-circle"></i>
@@ -61,7 +71,7 @@
                                         @endif
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                              document.getElementById('logout-form').submit();">
+                                            document.getElementById('logout-form').submit();">
                                             {{ __('Se Déconnecter') }}
                                         </a>
                                     </div>
@@ -71,11 +81,50 @@
                                 @csrf
                             </form>
                         </li>
+                        <!--
+                            @if (has_tfe() == null)
+                                <li class="nav-item" role="presentation">
+                                    <div class="dropdown">
+                                        <div class="dropdown-toggle nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-user-circle"></i> {{ __('Mon TFE') }}
+                                        </div>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <a class="dropdown-item" href="">Voir le rapport</a>
+                                            <a class="dropdown-item" href="">Modifier les informations</a>
+                                            <a class="dropdown-item" href="#">Imprimer la preuve de mise en ligne</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endif
+                            <li class="nav-item">
+                            </li>
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <div class="dropdown-toggle nav-link" href="#" role="button" id="profilMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-user-circle"></i> {{ __('Mon profil') }}
+                                    </div>
+                                    <div class="dropdown-menu" aria-labelledby="profilMenuLink">
+                                        @if (has_tfe() != null)
+                                            <a class="dropdown-item"
+                                                href="{{ route('profil', has_tfe()->id) }}">{{ Auth::user()->name }}</a>
+                                        @else
+                                            <a class="dropdown-item"
+                                                href="{{ route('profil', -1) }}">{{ Auth::user()->name }}</a>
+                                        @endif
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                            {{ __('Se Déconnecter') }}
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        -->
                     @endguest
                 @endif
             </ul>
-            <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle"
-                    type="button"></button></div>
+            <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
+                    id="sidebarToggle" type="button"></button></div>
         </div>
     </div>
 </nav>

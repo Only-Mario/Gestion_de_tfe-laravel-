@@ -57,7 +57,8 @@
                     </div>
                     <div class="form-group">
                         <label>{{ __('N° d\'enrégistrement') }}</label>
-                        <input type="email" class="form-control" value="{{ $user == null ?: $user->id }}" disabled="true">
+                        <input type="email" class="form-control" value="{{ $user == null ?: $user->id }}"
+                            disabled="true">
                     </div>
                 </div>
             </div>
