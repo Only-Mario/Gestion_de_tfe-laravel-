@@ -14,6 +14,8 @@ class Document extends Model
         'path',
     ];
 
+    protected $guarded = [];
+
     public function tfe(){
         return $this->belongsTo('App\Models\Tfe');
     }

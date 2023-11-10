@@ -26,6 +26,14 @@ class Tfe extends Model
         'resume'
     ];
 
+    protected $guarded = [];
+
+    // Define the relationship with the Document model
+    public function documents()
+    {
+        return $this->belongsTo(Document::class);
+    }
+
     public function document()
     {
         return $this->hasOne('App\Models\Document');

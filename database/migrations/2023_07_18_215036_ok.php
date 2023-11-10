@@ -16,6 +16,11 @@ class Ok extends Migration
         Schema::table('tves', function (Blueprint $table) {
             $table->longText('resume')->default("");
         });
+        if (!Schema::hasColumn('tves', 'resume')) {
+            Schema::table('tves', function (Blueprint $table) {
+                $table->longText('resume')->default("");
+            });
+        }
     }
 
     /**
@@ -28,5 +33,10 @@ class Ok extends Migration
         Schema::table('tves', function (Blueprint $table) {
             $table->longText('resume')->default("");
         });
+        if (Schema::hasColumn('tves', 'resume')) {
+            Schema::table('tves', function (Blueprint $table) {
+                $table->dropColumn('resume');
+            });
+        }
     }
 }

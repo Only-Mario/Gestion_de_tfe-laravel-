@@ -51,7 +51,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
 
-         $input=$request->all();
+          $input=$request->all();
           $this->validate($request,[
             'email'=>'required|email',
             'password'=>'required',
@@ -62,7 +62,7 @@ class LoginController extends Controller
                 return redirect()->route('dashboard');
             }
             else{
-                 return redirect()->route('welcome');
+                return redirect()->route('welcome');
             }
           }
           else{

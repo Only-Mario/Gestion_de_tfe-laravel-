@@ -55,7 +55,7 @@
                         </li>
                         @endif
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i
+                            <a class="nav-link" href="{{  route('report.list') }}"><i
                                 class="fas fa-user-circle"></i><span>{{ __('Liste des rapports') }}</span></a>
                         </li>
                         <li class="nav-item">

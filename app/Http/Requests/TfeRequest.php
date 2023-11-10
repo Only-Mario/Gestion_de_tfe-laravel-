@@ -34,7 +34,6 @@ class TfeRequest extends FormRequest
             'maitre_memoire' => ['required','string', 'max:255'],
             'resume' => 'required|string|max:1000',
             "document" => ['required','mimes:pdf', 'max:20480'],
-            
         ];
     }
 }
