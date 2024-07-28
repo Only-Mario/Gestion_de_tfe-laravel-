@@ -62,7 +62,6 @@
 
             <div class="row ">
                 @forelse($tfes->take(25) as $tfe)
-                
                     <div class="col-12 pb-3">
                         <div class="card shadow">
                          <input id="tfe{{$loop->index}}" type="text" hidden value="{{$tfe->resume}}">
