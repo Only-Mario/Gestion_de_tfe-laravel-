@@ -14,17 +14,17 @@ class TfeController extends Controller
     //
 
     public function index(){
-        $years = Tfe::years();
+        $annee_de_realisations = Tfe::annee_de_realisations();
         $tfes = Tfe::orderByDate()->get();
-        return view('welcome', compact('tfes', 'years'));
+        return view('welcome', compact('tfes', 'annee_de_realisations'));
     }
     
     
     public function create(Guard $auth){
 
-        $years = Tfe::years();
+        $annee_de_realisations = Tfe::annee_de_realisations();
         if (Auth::guard('admin')->check() || $auth->check()) {
-            return view('tfe.create', compact('years'));
+            return view('tfe.create', compact('annee_de_realisations'));
         }
     }
 
@@ -79,10 +79,10 @@ class TfeController extends Controller
 
 
     public function edit($id){
-        $years = Tfe::years();       
+        $annee_de_realisations = Tfe::annee_de_realisations();       
         $tfe = Tfe::findOrFail($id);
         $doc=Document::findOrFail($tfe->document_id)->get();
-        return view('tfe.edit', compact('years', 'tfe',"doc"));
+        return view('tfe.edit', compact('annee_de_realisations', 'tfe',"doc"));
     }
 
 

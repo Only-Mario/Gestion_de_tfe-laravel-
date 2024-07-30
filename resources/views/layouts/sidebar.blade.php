@@ -2,17 +2,17 @@
     <div class="row row-cols-md-6 row-col-sm-2">
         <div class="col">
             <form id="form2" action="{{ route('search') }}" method="get">
-                <input type="text" class="form-control" id="search" name="search" placeholder="par mot clé...">
+                <input type="text" class="form-control" id="kw" name="kw" placeholder="Entre un Mot clé...">
             </form>
         </div>
         <div class="col">
             <button class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('form2').submit();">Rechercher</button>
         </div>
         <div class="col">
-            <form action="{{ route('search') }}" id="form3" method="get">
-                <select class="form-control" name="year" id="year">
-                    @foreach($years as $year)
-                    <option value="{{ $year }}">{{ $year }}</option>
+            <form id="form3" action="{{ route('search') }}" method="get">
+                <select class="form-control" name="annee_de_realisation" id="annee_de_realisation">
+                    @foreach($annee_de_realisations as $annee_de_realisation)
+                    <option value="{{ $annee_de_realisation }}">{{ $annee_de_realisation }}</option>
                     @endforeach
                 </select>
             </form>
@@ -21,8 +21,8 @@
             <button class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('form3').submit();">Filtrer par année</button>
         </div>
         <div class="col">
-            <form action="{{ route('search') }}" id="form4" method="get">
-                <select class="form-control" name="field_of_study" id="field_of_study">
+            <form id="form4" action="{{ route('search') }}" method="get">
+                <select class="form-control" name="groupe_pedagogique" id="groupe_pedagogique">
                     <option value="@_GEI">Génie Electrique et Informatique (GEI)</option>
                     <option value="@_GC">Génie Civil (GC)</option>
                     <option value="@_MS">Maintenance des Systèmes (MS)</option>
@@ -41,7 +41,7 @@
     <div class="input-group">
         <div class="form-outline">
             <form id="form6" class="form" action="{{ route('search') }}" method="get">
-                <input type="text" class="form-control" id="search" name="search" placeholder="par mot clé...">
+                <input type="text" class="form-control" id="kw" name="kw" placeholder="par mot clé...">
             </form>
         </div>
         <button class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('form6').submit();">

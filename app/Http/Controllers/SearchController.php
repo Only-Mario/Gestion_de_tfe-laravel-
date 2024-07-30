@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class SearchController extends Controller
 {
     public function search(Request $request) {
-        $kw = $request->input('search');
-        $year = $request->input('year');
-        $groupe_pedagogique = $request->input('field_of_study');
+        $kw = $request->input('kw');
+        $annee_de_realisation = $request->input('annee_de_realisation');
+        $groupe_pedagogique = $request->input('groupe_pedagogique');
     
         $query = Tfe::query();
     
@@ -30,8 +30,8 @@ class SearchController extends Controller
         }
     
         // Filtrer par année
-        if (!empty($year)) {
-            $query->where('annee_de_realisation', $year);
+        if (!empty($annee_de_realisation)) {
+            $query->where('annee_de_realisation', $annee_de_realisation);
         }
     
         // Filtrer par filière
@@ -42,9 +42,9 @@ class SearchController extends Controller
         $tfes = $query->get();
     
         // Récupérer toutes les années disponibles pour l'affichage dans la vue
-        $yrs = Tfe::years();
-        $years = collect($yrs)->sortDesc();
+        $yrs = Tfe::annee_de_realisations();
+        $annee_de_realisations = collect($yrs)->sortDesc();
     
-        return view('search', compact('tfes', 'years', 'kw', 'year', 'groupe_pedagogique'));
+        return view('search', compact('tfes', 'annee_de_realisations', 'kw', 'annee_de_realisation', 'groupe_pedagogique'));
     } 
 }

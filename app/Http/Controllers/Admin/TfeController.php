@@ -22,7 +22,7 @@ class TfeController extends Controller
     }
 
     public function index(){
-        $years = Tfe::years();
+        $years = Tfe::annee_de_realisations();
         $tfes = Tfe::orderByDate()->get();
         return view('admin.home', compact('tfes', 'years'));
     }

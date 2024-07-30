@@ -26,31 +26,31 @@ class Tfe extends Model
 
     public function document()
     {
-        return $this->hasOne('App\Models\Document');
+        return $this->hasOne(Document::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 
-    protected static function years(){
+    protected static function annee_de_realisations(){
         $currentYear = date('Y');
-        $years = [];
+        $annee_de_realisations = [];
     
         while ($currentYear >= 2000) {
-            array_push($years, $currentYear);
+            array_push($annee_de_realisations, $currentYear);
             $currentYear--;
         }
-        return $years;
+        return $annee_de_realisations;
     }
 
     public function scopeSearchByTheme($query, $kw){
         $query->where('theme', 'LIKE', '%'. $kw .'%');
     }
     
-    public function scopeSearchByYear($query, $year){
-        $query->where('annee_de_realisation', $year);
+    public function scopeSearchByYear($query, $annee_de_realisation){
+        $query->where('annee_de_realisation', $annee_de_realisation);
     }
     
     public function scopeSearchByEntity($query, $groupe_pedagogique){

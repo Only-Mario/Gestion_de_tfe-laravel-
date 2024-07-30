@@ -61,7 +61,7 @@
                         <input id="tfe{{$index}}" type="text" hidden value="{{$tfe->resume}}">
                         <div class="card-body">
                             <div class="row align-items-center">
-                                <div class="col mr-4" onclick="openModal({{$index}})">
+                                <div class="col mr-4" onclick="openModal({$index})">
                                     <div class="card-title text-dark" style="font-size: 20px"><span>
                                             {{ $tfe->theme }}</span></div>
                                     <div class="card-text text-dark"><span>Réalisé par {{ $tfe->auteurs }} en
