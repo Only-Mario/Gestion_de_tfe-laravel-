@@ -15,7 +15,8 @@ class TfeController extends Controller
 
     public function index(){
         $annee_de_realisations = Tfe::annee_de_realisations();
-        $tfes = Tfe::orderByDate()->get();
+        // $tfes = Tfe::orderByDate()->get();
+        $tfes = Tfe::orderByDate()->paginate(15); 
         return view('welcome', compact('tfes', 'annee_de_realisations'));
     }
     
