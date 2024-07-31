@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Filiere;
 
 class TfeController extends Controller
 {
@@ -20,12 +21,15 @@ class TfeController extends Controller
         return view('welcome', compact('tfes', 'annee_de_realisations'));
     }
     
-    
+
     public function create(Guard $auth){
+
+         // Récupérer toutes les filières de la base de données
+         $filieres = Filiere::all();
 
         $annee_de_realisations = Tfe::annee_de_realisations();
         if (Auth::guard('admin')->check() || $auth->check()) {
-            return view('tfe.create', compact('annee_de_realisations'));
+            return view('tfe.create', compact('annee_de_realisations', 'filieres'));
         }
     }
 

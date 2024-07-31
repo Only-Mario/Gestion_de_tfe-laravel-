@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Models\User;
 use Illuminate\Support\Facades\Request;
 
@@ -63,6 +64,8 @@ Route::group(['middleware' => ['is_admin', 'auth']], function () {
 //************************************************************
 
 
+
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('tfe', "App\Http\Controllers\TfeController");

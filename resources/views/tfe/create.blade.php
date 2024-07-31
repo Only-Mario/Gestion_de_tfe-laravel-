@@ -42,8 +42,8 @@
                                         <select class="form-control @error('annee_de_realisation') is-invalid @enderror"
                                             name="annee_de_realisation" id="annee_de_realisation"
                                             value="{{ old('annee_de_realisation') }}">
-                                            @foreach ($years as $year)
-                                                <option value="{{ $year }}">{{ $year }}</option>
+                                            @foreach ($annee_de_realisations as $annee_de_realisation)
+                                                <option value="{{ $annee_de_realisation }}">{{ $annee_de_realisation }}</option>
                                             @endforeach
                                         </select>
                                         @error('annee_de_realisation')

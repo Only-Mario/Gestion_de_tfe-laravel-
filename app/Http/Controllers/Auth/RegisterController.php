@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Filiere  ;
+use App\Models\Tfe;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request; // Ajouter cette ligne
 
 class RegisterController extends Controller
 {
@@ -24,16 +26,13 @@ class RegisterController extends Controller
     |
     */
 
-     use RegistersUsers;
+    use RegistersUsers;
+
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    ///------------------------------------------------
-    
-
-    ///------------------------------------------------
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
@@ -59,7 +58,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            "matricule" => ['numeric', 'min:6'],
+            'entity' => ['required', 'string', 'max:255'], 
+            'study_year' => ['required', 'integer', 'min:1', 'max:3'], 
+            'matricule' => ['required', 'string', 'min:6', 'unique:users'], 
         ]);
     }
 
@@ -71,7 +72,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -81,6 +81,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
     /**
      * @param Request $request
      *
@@ -90,12 +91,18 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
         User::create([
-            'email' => $request->username,
+            'email' => $request->email, // Changer 'username' en 'email'
             'password' => Hash::make($request->password),
-            'name'=>"Admin",
-            'is_admin'=>true,
+            'name' => "Admin",
+            'is_admin' => false,
         ]);
 
         return redirect(route('store'));
+    }
+
+        public function showRegistrationForm()
+    {
+        $filieres = Filiere::all();
+        return view('auth.register', compact('filieres'));
     }
 }

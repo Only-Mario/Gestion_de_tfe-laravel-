@@ -18,7 +18,6 @@ class passwordUpdateController extends Controller
         return $a->password.'--->'.$user->password;
          return redirect(route('store'));
       }
-
       return redirect()->back();
    }
 }

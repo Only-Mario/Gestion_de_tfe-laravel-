@@ -3,21 +3,21 @@
 @section('content')
     <div class="p-5">
         <div>
-            <progress id="progressBar" hidden="true">
+            <progress id="progressBar" hidden="true"></progress>
         </div>
         <div class="card">
             <div class="card-header py-3" style="background-color: #4169e1;">
-                <p class="m-0 font-weight-bold text-center" style="font-size: 20px;color: white;">Créer un compte</p>
+                <p class="m-0 font-weight-bold text-center" style="font-size: 20px; color: white;">Créer un compte</p>
             </div>
             <div class="card-body">
-                <form class="user"method="POST" action="{{ route('register') }}">
+                <form class="user" method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <div class="mb-4">
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"
                                     name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
-                                    id="exampleFirstName" placeholder="{{ __('Nom complet') }}" name="first_name" />
+                                    placeholder="{{ __('Nom complet') }}" />
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -26,21 +26,19 @@
                             </div>
                             <div>
                                 <select class="form-control @error('entity') is-invalid @enderror" name="entity"
-                                    value="{{ old('entity') }}" id="entity" onautocomplete="entity">
+                                    value="{{ old('entity') }}" required autocomplete="entity">
                                     @foreach ($filieres as $filiere)
                                         <option value="{{ $filiere->nom }}">{{ $filiere->description }}
                                             ({{ $filiere->nom }})
                                         </option>
                                     @endforeach
                                 </select>
-
                                 @error('entity')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-
                         </div>
 
                         <div class="col-sm-6 mb-3 mb-sm-0">
@@ -55,14 +53,12 @@
                                 @enderror
                             </div>
                             <div>
-                                <select class="form-control @error('Année d\'etude') is-invalid @enderror" name="study_year"
-                                    name="study_year" id="study_year" value="{{ old('study_year') }}"
-                                    autocomplete="study_year">
-                                    <option value="1"> 1ère Année</option>
-                                    <option value="2"> 2ème Année</option>
-                                    <option value="3"> 3ème Année</option>
+                                <select class="form-control @error('study_year') is-invalid @enderror" name="study_year"
+                                    value="{{ old('study_year') }}" required autocomplete="study_year">
+                                    <option value="3">3ème Année</option>
+                                    <option value="2">2ème Année</option>
+                                    <option value="1">1ère Année</option>
                                 </select>
-
                                 @error('study_year')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -93,19 +89,13 @@
                             @enderror
                         </div>
                         <div class="col-sm-6">
-
                             <input type="password" class="form-control" id="password-confirm"
                                 placeholder="Mots de passe (confirmer)" name="password_confirmation"
                                 autocomplete="new-password" />
-
                         </div>
                     </div>
                     <button style="background-color: #4169e1; font-size: 20px" class="btn btn-primary text-white"
-                        id="submit" type="submit"
-                        onclick="event.preventDefult(); document.getElementById('progressBar').hidden=false; setTimeout(()=>{
-            document.getElementById('progressBar').hidden=true;
-            document.getElementById('submit').submit();
-        },5000)"> S'inscrire
+                        id="submit-btn" type="submit"> S'inscrire
                     </button>
                 </form>
             </div>
