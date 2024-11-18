@@ -58,9 +58,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'entity' => ['required', 'string', 'max:255'], 
-            'study_year' => ['required', 'integer', 'min:1', 'max:3'], 
-            'matricule' => ['required', 'string', 'min:6', 'unique:users'], 
+            'entity' => ['required', 'string', 'max:255'],
+            'study_year' => ['required', 'integer', 'min:1', 'max:3'],
+            'matricule' => ['required', 'string', 'min:6', 'unique:users'],
         ]);
     }
 
@@ -91,7 +91,7 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
         User::create([
-            'email' => $request->email, // Changer 'username' en 'email'
+            'email' => $request->email, 
             'password' => Hash::make($request->password),
             'name' => "Admin",
             'is_admin' => false,

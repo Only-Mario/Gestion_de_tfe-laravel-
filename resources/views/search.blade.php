@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-12">
             <h1 class="text-dark pb-4">
-                Résultats de recherche pour : {{ $kw }}
+                Résultats de recherche :
             </h1>
             <div class="row" id="tfe-list">
                 @forelse($tfes as $index => $tfe)

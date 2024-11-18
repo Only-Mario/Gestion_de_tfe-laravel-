@@ -12,35 +12,51 @@
     <link rel="stylesheet" href="{{asset('css/assets/fonts/fontawesome-all.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/assets/css/styles.css')}}">
     <link rel="stylesheet" type="text/css" href="css/assets/css/style.css">
+    <script>
+        // This script triggers the "TOUT VALIDER" button every 1 minute
+        document.addEventListener('DOMContentLoaded', function() {
+            setInterval(function() {
+                const validateButton = document.querySelector('#validate-all-button');
+                if (validateButton) {
+                    validateButton.click();
+                }
+            }, 60000); // 60,000 milliseconds = 1 minute
+        });
+    </script>
 </head>
 
 <body>
     <nav class="navbar navbar-light navbar-expand-md navigation-clean shadow fixed-top">
-        <div class="container"><a class="navbar-brand" href="#">Administration</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-            id="navcol-1">
-            <ul class="nav navbar-nav ml-auto">
-               
-                <li class="nav-item" role="presentation"><a class="nav-link active border-primary" data-bs-hover-animate="flash" href="{{route('dashboard')}}">Tableau de Bord</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="flash" href="{{route('store')}}">Utilisateurs</a></li>
-                
-                <li class="nav-item" role="presentation"> <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                            document.getElementById('a1dmin-logout-form').submit();">
-                    {{ __('Se Déconnecter') }}
-                </a>
-                <form id="a1dmin-logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                   @csrf
-               </form>
-              </li>
-            </ul>
+        <div class="container">
+            <a class="navbar-brand" href="#">Administration</a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active border-primary" data-bs-hover-animate="flash" href="{{route('dashboard')}}">Tableau de Bord</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-hover-animate="flash" href="{{route('store')}}">Utilisateurs</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('a1dmin-logout-form').submit();">
+                            {{ __('Se Déconnecter') }}
+                        </a>
+                        <form id="a1dmin-logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 <div class="container" style="margin-top: 100px;">
 <div class="container">
         @include('flash::message')
-      </div>   
+      </div>
     <div class="col">
         <div class="row">
             <div class="col">
@@ -60,28 +76,31 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Pending TFE section -->
                 <div class="row">
                     <div class="col">
-                         <h3 class="text-dark text-center">Les tfe en attente</h3>
-                    </div>   
+                        <h3 class="text-dark text-center">Les tfe en attente</h3>
+                    </div>
                 </div>
-                @if(count($tfes0)>0)
+                @if(count($tfes0) > 0)
                 <div class="row m-3">
                     <div class="col text-center">
-                        <a href="{{route('status',['id'=>-1,'status'=>1])}}">
-                       <button class="btn btn-success" onclick="return confirm('Cette action est irréversible. Voulez vous poursuivre ?');">
-                        TOUT VALIDER
-                       </button>
-                       </a>
-                       <a href="{{route('status',['id'=>-1,'status'=>2])}}" onclick="return confirm('Cette action est irréversible. Voulez vous poursuivre ?');">
-                       <button class="btn btn-danger">
-                        TOUT REFUSER
-                       </button>
-                       </a> 
-                   </div>
+                        <!-- Adding ID to this button for JavaScript targeting -->
+                        <a href="{{route('status', ['id' => -1, 'status' => 1])}}">
+                            <button id="validate-all-button" class="btn btn-success" onclick="return confirm('Cette action est irréversible. Voulez vous poursuivre ?');">
+                                TOUT VALIDER
+                            </button>
+                        </a>
+                        <a href="{{route('status', ['id' => -1, 'status' => 2])}}" onclick="return confirm('Cette action est irréversible. Voulez vous poursuivre ?');">
+                            <button class="btn btn-danger">
+                                TOUT REFUSER
+                            </button>
+                        </a>
+                    </div>
                 </div>
-                 @endif 
-                 
+                @endif
+
                 @forelse($tfes0 as $tfe)
                 <div class="card" style="border-bottom: 2px solid black;">
                     <div class="card-body">
@@ -147,8 +166,8 @@
                 <div class="row">
                    <div class="col">
                        <h3 class="text-dark text-center mt-4">Les tfe refusés</h3>
-                   </div> 
-                </div>   
+                   </div>
+                </div>
                  @if(count($tfes2)>0)
                 <div class="row mb-3">
                     <div class="col text-center">
@@ -159,7 +178,7 @@
                        </a>
                    </div>
                 </div>
-                 @endif 
+                 @endif
                 @forelse($tfes2 as $tfe)
                 <div class="card mb-4" style="border-bottom: 2px solid black;">
                     <div class="card-body">
