@@ -1,0 +1,38 @@
+.m3-form-group {
+    position: relative;
+    margin-bottom: 24px;
+
+    .form-control {
+        background-color: transparent;
+        border: 1px solid var(--m3-outline);
+        border-radius: 4px;
+        height: 56px;
+        padding: 16px;
+        transition: border 0.2s;
+
+        &:focus {
+            border: 2px solid var(--m3-primary);
+            box-shadow: none;
+            & + label {
+                color: var(--m3-primary);
+                transform: translateY(-28px) scale(0.85);
+                background: var(--m3-surface);
+                padding: 0 4px;
+            }
+        }
+    }
+
+    label {
+        position: absolute;
+        left: 16px;
+        top: 16px;
+        color: var(--m3-outline);
+        pointer-events: none;
+        transition: all 0.2s ease;
+        transform-origin: left top;
+    }
+
+    .form-control:not(:placeholder-shown) + label {
+        transform: translateY(-28px) scale(0.85);
+    }
+}

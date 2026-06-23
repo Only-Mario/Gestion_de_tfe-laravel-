@@ -1,0 +1,136 @@
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+// Colors
+
+// Material Design 3 Color Palette (exemple, vous pouvez ajuster)
+// Ces couleurs sont basées sur la palette par défaut de M3
+:root {
+    --m3-primary: #004B93;
+    --m3-on-primary: #FFFFFF;
+    --m3-primary-container: #EADDFF;
+    --m3-on-primary-container: #21005D;
+    --m3-secondary: #625B71;
+    --m3-on-secondary: #FFFFFF;
+    --m3-secondary-container: #E8DEF8;
+    --m3-on-secondary-container: #1D192B;
+    --m3-tertiary: #7D5260;
+    --m3-on-tertiary: #FFFFFF;
+    --m3-tertiary-container: #FFD8E4;
+    --m3-on-tertiary-container: #31111D;
+    --m3-error: #B3261E;
+    --m3-on-error: #FFFFFF;
+    --m3-error-container: #F9DEDC;
+    --m3-on-error-container: #410E0B;
+    --m3-background: #FFFBFE;
+    --m3-on-background: #1C1B1F;
+    --m3-surface: #FFFBFE;
+    --m3-on-surface: #1C1B1F;
+    --m3-surface-variant: #E7E0EC;
+    --m3-on-surface-variant: #49454F;
+    --m3-outline: #79747E;
+    --m3-shadow: #000000;
+    --m3-inverse-surface: #313033;
+    --m3-inverse-on-surface: #F4EFF4;
+    --m3-inverse-primary: #D0BCFF;
+}
+
+// Surcharge des variables Bootstrap pour un look M3
+$primary:    #6750A4;
+$secondary:  #625B71;
+$success:    #4CAF50;
+$info:       #2196F3;
+$warning:    #FFC107;
+$danger:     #B3261E;
+$light:      #F4EFF4;
+$dark:       #1C1B1F;
+$body-color: #1C1B1F;
+$link-color: #6750A4;
+
+// Ajustements généraux pour Material Design 3
+$border-radius: 16px; // Rayon de bordure par défaut pour les cartes, etc.
+$border-radius-sm: 8px;
+$border-radius-lg: 28px; // Rayon de bordure plus grand pour les boutons, menus
+
+$enable-shadows: true; // Active les ombres pour l'élévation M3
+
+// Boutons
+.btn {
+    border-radius: $border-radius-lg; // Boutons plus ronds
+    padding: 10px 24px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0px 2px 4px rgba(var(--m3-shadow), 0.1); // Ombre légère pour l'élévation
+
+    &:hover {
+        box-shadow: 0px 4px 8px rgba(var(--m3-shadow), 0.15);
+    }
+}
+
+// Bouton Material Design 3 (Filled Button)
+.m3-button-primary {
+    background-color: var(--m3-primary);
+    color: var(--m3-on-primary);
+    border: none;
+    border-radius: $border-radius-lg;
+    padding: 10px 24px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0px 2px 4px rgba(var(--m3-shadow), 0.1);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    &:hover {
+        background-color: var(--m3-primary);
+        filter: brightness(0.95);
+        box-shadow: 0px 4px 8px rgba(var(--m3-shadow), 0.15);
+    }
+}
+
+.btn-primary {
+    background-color: var(--m3-primary);
+    color: var(--m3-on-primary);
+    &:hover {
+        background-color: var(--m3-primary);
+        filter: brightness(0.95);
+    }
+}
+
+.btn-outline-primary {
+    border-color: var(--m3-outline);
+    color: var(--m3-primary);
+    &:hover {
+        background-color: var(--m3-primary-container);
+        color: var(--m3-on-primary-container);
+    }
+}
+
+// Card Material Design 3
+.m3-card-elevation-1 {
+    border-radius: $border-radius;
+    border: none;
+    background-color: var(--m3-surface-container);
+    box-shadow: 0px 1px 3px rgba(var(--m3-shadow), 0.1); /* Élévation 1 */
+}
+
+.m3-card-header {
+    background-color: var(--m3-primary-container);
+    color: var(--m3-on-primary-container);
+    border-bottom: none;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+}
+
+// Cartes
+.card {
+    border-radius: $border-radius;
+    border: none;
+    background-color: var(--m3-surface-container);
+    box-shadow: 0px 1px 3px rgba(var(--m3-shadow), 0.1);
+}

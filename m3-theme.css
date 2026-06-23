@@ -1,0 +1,74 @@
+/* Centralisation des variables Material Design 3 */
+:root {
+    /* Palette Primaire basée sur rgb(0, 75, 147) */
+    --m3-primary: #004B93; /* rgb(0, 75, 147) */
+    --m3-on-primary: #ffffff;
+    --m3-primary-container: #d1e4ff;
+    --m3-on-primary-container: #001d3d;
+
+    /* Palette Secondaire (teintes neutres/bleutées) */
+    --m3-secondary: #535f70;
+    --m3-on-secondary: #ffffff;
+    --m3-secondary-container: #d6e3f8;
+    --m3-on-secondary-container: #111c2b;
+
+    /* Surfaces et Fonds */
+    --m3-surface: #fdfbff;
+    --m3-on-surface: #1a1c1e; /* Texte principal */
+    --m3-surface-variant: #dfe2eb; /* Pour les dividers ou fonds de cartes */
+    --m3-on-surface-variant: #43474e; /* Texte secondaire */
+
+    /* Conteneurs de surface (nouveauté M3) */
+    --m3-surface-container-lowest: #ffffff;
+    --m3-surface-container-low: #f7f3f9;
+    --m3-surface-container: #f1f0f7;
+    --m3-surface-container-high: #ebe9f1;
+    --m3-surface-container-highest: #e5e2ea;
+
+    /* Formes (Shapes M3) */
+    --m3-shape-small: 8px;
+    --m3-shape-medium: 12px;
+    --m3-shape-large: 16px;
+    --m3-shape-full: 28px;
+
+    /* États et Utilitaires */
+    --m3-outline: #73777f;
+    --m3-error: #ba1a1a;
+    --m3-shadow: 0, 0, 0; /* Utilisé en rgba(var(--m3-shadow), 0.1) */
+
+    /* Typographie */
+    --m3-font-main: 'Roboto', 'Segoe UI', system-ui, sans-serif;
+
+    /* Elévation (Shadows M3) */
+    --elevation-1: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+    --elevation-2: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+    --elevation-3: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
+    --elevation-3: 0px 4px 8px 3px rgba(var(--m3-shadow), 0.15), 0px 1px 3px 0px rgba(var(--m3-shadow), 0.3);
+    --elevation-4: 0px 6px 10px 4px rgba(var(--m3-shadow), 0.15), 0px 2px 3px 0px rgba(var(--m3-shadow), 0.3);
+    --elevation-5: 0px 8px 12px 6px rgba(var(--m3-shadow), 0.15), 0px 4px 4px 0px rgba(var(--m3-shadow), 0.3);
+}
+
+/* Styles Globaux Modernes */
+body {
+    background-color: var(--m3-surface);
+    color: var(--m3-on-surface);
+    font-family: var(--m3-font-main);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+}
+
+/* Scrollbar Moderne */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--m3-surface-variant);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--m3-outline);
+}

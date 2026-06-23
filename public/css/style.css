@@ -1,0 +1,113 @@
+body{
+    width: 100%;
+    scroll-behavior:smooth;
+    /* color: #f5f5f5; Géré par les variables M3 globales dans app.css */
+}
+
+a:hover{
+    text-decoration: none;
+}
+#home{
+    width: 100%;
+    height: 600px;
+    background: url(../images/img4.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 15px;
+}
+
+#home div{
+    color: var(--m3-on-primary); /* Material 3: texte sur couleur primaire ou foncée */
+    text-justify: auto;
+    justify-content: center;
+
+}
+
+#home div h1{
+    font-size: 50px; /* Material 3: Display Large */
+}
+.dropbtn {
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--m3-primary); /* Material 3: couleur primaire */
+    color: var(--m3-on-primary); /* Material 3: texte sur primaire */
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--m3-surface-container); /* Material 3: surface pour les menus */
+    color: var(--m3-on-surface); /* Material 3: texte sur surface */
+    box-shadow: var(--elevation-2); /* Material 3: élévation */
+    border-radius: var(--m3-shape-medium); /* Material 3: coins arrondis */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: var(--m3-on-surface); /* Material 3: texte sur surface */
+    display: block;
+}
+
+label{
+    color: var(--m3-on-surface-variant); /* Material 3: texte secondaire */
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+#home{
+    width: auto;
+    height: 600px;
+    background-position: center;
+}
+
+#home div{
+    color: #fff;
+    text-justify: auto;
+    position: relative;
+    top: 200px;
+    bottom: 100px;
+    left: 200px;
+}
+#dataTable{
+    box-shadow: var(--elevation-1); /* Material 3: élévation légère */
+}
+#home div h1{
+    font-size: 50px;
+}
+
+.consult-btn{
+    padding: 8px; /* Material 3: padding */
+    background-color: var(--m3-primary); /* Material 3: couleur primaire */
+    color: var(--m3-on-primary); /* Material 3: texte sur primaire */
+    width: 100px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.consult-btn:hover{
+    text-decoration: none;
+    color: #fff;
+    transition: all 1s;
+}
+
+main{
+    background-color: rgb(243, 248, 248);
+}
+
+#tfe{
+    padding-top: 50px ;
+    padding-bottom: 50px ;
+}
+
+footer{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    box-shadow: 0px 0px 15px rgb(146, 143, 143);
+}

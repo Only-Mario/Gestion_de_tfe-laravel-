@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5358cae6-8ff8-42e7-bb92-2ddc075f1f8c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.styleci.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/TfeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/myStatusController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ConfirmPasswordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/TfeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/passwordUpdateController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/profilController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/EncryptCookies.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/IsAdmin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/PreventRequestsDuringMaintenance.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/TrimStrings.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/TrustHosts.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/TrustProxies.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/PasswordUpdate.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/TfeRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Admin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Document.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Tfe.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/filieres.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Providers/BroadcastServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/helpers.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artisan" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bootstrap/app.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bootstrap/cache/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/broadcasting.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/cache.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/cors.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/hashing.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/logging.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/mail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/queue.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/services.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/session.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_28_141443_create_admins_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_28_193803_create_tfes_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_31_105834_create_tfe_documents_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_06_07_163003_create_filieres_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/CreateAdmin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manage_tfe.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/members.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/bootstrap/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/bootstrap/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/css/Navigation-Clean.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/fonts/fa-brands-400.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/fonts/fa-brands-400.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/fonts/fa-brands-400.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/fonts/fa-brands-400.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/fonts/fa-brands-400.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/fonts/fa-regular-400.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/fonts/fa-regular-400.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/fonts/fa-regular-400.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/fonts/fa-regular-400.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/fonts/fa-regular-400.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/fonts/fa-solid-900.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/fonts/fa-solid-900.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/fonts/fa-solid-900.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/fonts/fa-solid-900.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/fonts/fa-solid-900.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/fonts/fontawesome-all.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/js/bs-init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/js/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/js/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/assets/js/theme.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/dashboard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/helper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/account.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/image2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/image4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/image5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/image_acceuil (2).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/image_acceuil.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/images.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/img1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/img2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/img3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/img4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/img5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pdf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/refuser.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/valider.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bs-init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/jquery.1.11.1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/web.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/css/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ar/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ar/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ar/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ar/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ar/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/az/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/az/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/az/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/az/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/az/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/be/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/be/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/be/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/be/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/be/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/bg/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/bg/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/bg/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/bg/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/bg/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/bn/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/bn/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/bn/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/bn/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/bn/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/bs/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/bs/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/bs/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/bs/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/bs/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ca/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ca/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ca/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ca/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ca/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/cs/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/cs/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/cs/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/cs/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/cs/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/cy/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/cy/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/cy/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/cy/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/cy/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/da/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/da/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/da/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/da/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/da/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/de/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/de/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/de/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/de/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/de/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/de_CH/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/de_CH/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/de_CH/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/de_CH/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/de_CH/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/el/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/el/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/el/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/el/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/el/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/en/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/en/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/en/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/en/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/es/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/es/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/es/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/es/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/es/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/et/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/et/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/et/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/et/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/et/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/eu/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/eu/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/eu/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/eu/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/eu/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fa/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fa/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fa/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fa/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fa/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fi/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fi/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fi/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fi/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fi/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fil/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fil/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fil/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fil/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fil/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fr/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fr/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fr/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fr/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/fr/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/gl/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/gl/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/gl/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/gl/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/gl/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/he/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/he/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/he/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/he/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/he/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hi/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hi/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hi/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hi/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hi/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hr/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hr/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hr/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hr/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hr/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hu/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hu/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hu/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hu/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hu/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hy/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hy/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hy/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hy/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/hy/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/id/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/id/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/id/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/id/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/id/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/is/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/is/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/is/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/is/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/is/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/it/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/it/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/it/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/it/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/it/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ja/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ja/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ja/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ja/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ja/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ka/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ka/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ka/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ka/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ka/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/kk/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/kk/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/kk/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/kk/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/kk/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/km/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/km/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/km/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/km/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/km/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/kn/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/kn/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/kn/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/kn/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/kn/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ko/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ko/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ko/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ko/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ko/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/lt/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/lt/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/lt/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/lt/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/lt/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/lv/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/lv/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/lv/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/lv/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/lv/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/me/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/me/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/me/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/me/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/me/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/mk/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/mk/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/mk/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/mk/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/mk/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/mn/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/mn/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/mn/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/mn/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/mn/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/mr/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/mr/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/mr/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/mr/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/mr/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ms/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ms/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ms/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ms/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ms/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/nb/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/nb/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/nb/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/nb/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/nb/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ne/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ne/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ne/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ne/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ne/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/nl/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/nl/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/nl/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/nl/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/nl/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/nn/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/nn/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/nn/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/nn/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/nn/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/pl/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/pl/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/pl/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/pl/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/pl/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ps/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ps/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ps/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ps/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ps/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/pt/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/pt/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/pt/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/pt/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/pt/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/pt_BR/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/pt_BR/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/pt_BR/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/pt_BR/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/pt_BR/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ro/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ro/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ro/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ro/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ro/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ru/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ru/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ru/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ru/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ru/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sc/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sc/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sc/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sc/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sc/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/si/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/si/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/si/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/si/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/si/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sk/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sk/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sk/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sk/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sk/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sl/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sl/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sl/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sl/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sl/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sq/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sq/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sq/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sq/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sq/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sr_Cyrillic/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sr_Cyrillic/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sr_Cyrillic/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sr_Cyrillic/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sr_Cyrillic/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sr_Latin/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sr_Latin/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sr_Latin/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sr_Latin/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sr_Latin/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sv/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sv/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sv/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sv/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sv/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sw/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sw/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sw/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sw/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sw/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tg/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tg/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tg/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tg/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tg/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/th/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/th/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/th/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/th/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/th/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tk/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tk/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tk/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tk/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tk/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tl/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tl/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tl/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tl/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tl/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tr/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tr/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tr/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tr/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/tr/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ug/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ug/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ug/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ug/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ug/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/uk/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/uk/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/uk/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/uk/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/uk/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ur/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ur/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ur/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ur/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ur/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/uz_Cyrillic/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/uz_Cyrillic/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/uz_Cyrillic/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/uz_Cyrillic/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/uz_Cyrillic/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/uz_Latin/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/uz_Latin/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/uz_Latin/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/uz_Latin/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/uz_Latin/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vi/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vi/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vi/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vi/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vi/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/zh_CN/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/zh_CN/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/zh_CN/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/zh_CN/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/zh_CN/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/zh_HK/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/zh_HK/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/zh_HK/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/zh_HK/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/zh_HK/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/zh_TW/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/zh_TW/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/zh_TW/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/zh_TW/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/zh_TW/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/sass/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/home.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/store.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/passwords/confirm.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/passwords/updatePassword.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/profil.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/fullContainer.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/search.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/tfe/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/tfe/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/tfe/sucess.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/tfe/unauthorize.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/channels.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/console.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/app/public/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/debugbar/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/cache/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/cache/data/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/sessions/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/testing/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/framework/views/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/logs/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/CreatesApplication.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/ExampleTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Unit/ExampleTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="10" />
+    <option name="y" value="20" />
+    <option name="width" value="1346" />
+    <option name="height" value="688" />
+  </component>
+  <component name="ProjectId" id="1u8OewUCYoq8ZIpxqYDHzovLiWO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="tfe-management" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tfe-management" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tfe-management" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tfe-management" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tfe-management" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tfe-management" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tfe-management" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tfe-management" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Middleware" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="editor.config.ad.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5358cae6-8ff8-42e7-bb92-2ddc075f1f8c" name="Default Changelist" comment="" />
+      <created>1609708542122</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1609708542122</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2553517" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/EncryptCookies.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+  </component>
+</project>

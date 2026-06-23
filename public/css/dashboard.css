@@ -1,0 +1,54 @@
+body {
+  font-size: .875rem;
+}
+
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
+
+
+/*
+ * Content
+ */
+
+[role="main"] {
+  padding-top: 133px; /* Space for fixed navbar */
+}
+
+@media (min-width: 768px) {
+  [role="main"] {
+    padding-top: 48px; /* Space for fixed navbar */
+  }
+}
+
+/*
+ * Navbar
+ */
+
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: 1rem;
+  background-color: var(--m3-primary-container); /* Material 3: Utilise le conteneur primaire */
+  box-shadow: inset -1px 0 0 rgba(var(--m3-shadow), .25); /* Material 3: Utilise la variable d'ombre */
+}
+
+.navbar .form-control {
+  padding: .75rem 1rem;
+  border-width: 0;
+  border-radius: var(--m3-shape-small); /* Material 3: coins légèrement arrondis */
+}
+
+.form-control-dark {
+  color: var(--m3-on-surface); /* Material 3: couleur de texte sur surface */
+  background-color: var(--m3-surface-container-high); /* Material 3: surface plus élevée */
+  border-color: var(--m3-outline); /* Material 3: couleur de bordure */
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+}
