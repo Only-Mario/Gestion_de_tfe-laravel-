@@ -1,72 +1,52 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="fr">
 <head>
-  <link rel="stylesheet" href="{{asset('css/assets/bootstrap/css/bootstrap.min.css')}}">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
-  <link rel="stylesheet" href="{{asset('css/assets/fonts/fontawesome-all.min.css')}}">
-  <link rel="stylesheet" type="text/css" href="css/assets/css/style.css">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-
-  <!-- CSRF Token -->
-  <meta name="csrf-token" content="{{ csrf_token() }}">
-
-  <title>{{ config('app.name', 'INSTI | TFE') }}</title>
-  <!-- Styles -->
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-  <style>
-  .search-by-entity-items, .search-by-year-items{
-    display: none;
-}
-</style>
-<!--     //********************-****-->
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@yield('title', 'Rapports de fin d’études') | INSTI Lokossa</title>
+    <meta name="description" content="@yield('description', 'Plateforme des rapports et mémoires de fin d’études (licence, master, doctorat) de l’INSTI de Lokossa, Bénin.')">
+    <meta name="robots" content="@yield('robots', 'noindex, nofollow')">
+    <link rel="canonical" href="@yield('canonical', url()->current())">
+    <meta property="og:site_name" content="INSTI - Rapports de fin d’études">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:title" content="@yield('title', 'Rapports de fin d’études')">
+    <meta property="og:description" content="@yield('description', 'Rapports et mémoires de fin d’études de l’INSTI de Lokossa.')">
+    <meta property="og:url" content="@yield('canonical', url()->current())">
+    <meta property="og:image" content="{{ \App\Http\Controllers\RessourceController::url('logo') }}">
+    <meta name="twitter:card" content="summary">
+    <meta name="theme-color" content="#0d4293">
+    <link rel="icon" href="{{ \App\Http\Controllers\RessourceController::url('logo') }}" type="image/png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="{{ asset('css/assets/fonts/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ \App\Http\Controllers\RessourceController::url('style') }}">
+    @stack('head')
 </head>
-
-<body id="page-top" style="background-color: #f5f5f5;">
-
-    <div id="wrapper">
-        <!-- /*****************************-// -->
-        
-        @include('layouts.fullContainer')
-
-        <div class="d-flex flex-column" id="content-wrapper"><div id="content">
-            <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
-                <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button><label class="justify-content-center">Gestion des tfe</label>
-
-                </div>
-            </nav>
-            <main class="justify-content">
-            <div class="container">
-        @include('flash::message')
-      </div>   
+<body>
+    <a class="skip" href="#contenu">Aller au contenu</a>
+    <div class="shell">
+        @include('layouts.nav')
+        <div class="scrim" data-nav-close></div>
+        <div class="main">
+            <header class="topbar">
+                <button class="icon-btn" type="button" data-nav-toggle aria-controls="nav" aria-expanded="false" aria-label="Menu"><i class="fas fa-bars"></i></button>
+                <img src="{{ \App\Http\Controllers\RessourceController::url('logo') }}" alt="" width="36" height="36">
+                <strong>@yield('title', 'INSTI')</strong>
+            </header>
+            <main class="content" id="contenu">
+                @foreach (['success' => ['alert-ok', 'check-circle'], 'error' => ['alert-bad', 'exclamation-circle'], 'status' => ['alert-ok', 'check-circle']] as $cle => $style)
+                    @if (session($cle))
+                        <div class="alert {{ $style[0] }}" role="status"><i class="fas fa-{{ $style[1] }}" aria-hidden="true"></i><span>{{ session($cle) }}</span></div>
+                    @endif
+                @endforeach
                 @yield('content')
-            </main> 
-        </div>
-
-        <div>
-            <footer>
-                <div class="container">
-                    <p class="text-dark text-center">
-                    instilokossa&copy:Copyright {{ date('Y') }}
-                    &middot</p>
-                </div>
+            </main>
+            <footer class="foot">
+                © {{ date('Y') }} INSTI de Lokossa · <a href="https://insti.edu.bj/" rel="noopener">insti.edu.bj</a>
             </footer>
         </div>
     </div>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/jquery.1.11.1.js') }}" defer></script>
-    <script src="{{ asset('js/index.js') }}" defer></script>
-    <script src="css/assets/js/jquery.min.js"></script>
-    <script src="css/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="css/assets/js/bs-init.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
-    <script src="{{asset('css/assets/js/theme.js')}}"></script>
-
+    <script src="{{ \App\Http\Controllers\RessourceController::url('script') }}" defer></script>
 </body>
 </html>

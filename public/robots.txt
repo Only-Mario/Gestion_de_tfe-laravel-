@@ -1,2 +1,10 @@
 User-agent: *
-Disallow:
+Disallow: /admin
+Disallow: /profil
+Disallow: /login
+Disallow: /register
+Disallow: /password
+Disallow: /verify
+Disallow: /tfe
+
+Sitemap: https://www.rapports.insti.edu.bj/sitemap.xml

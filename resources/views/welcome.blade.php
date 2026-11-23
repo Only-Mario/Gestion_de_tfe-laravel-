@@ -1,123 +1,72 @@
 @extends('layouts.app')
-
+@php($actifs = array_filter(\Illuminate\Support\Arr::only($filtres, ['kw', 'niveau', 'filiere', 'annee', 'tri'])))
+@section('title', 'Rapports et mémoires de fin d’études')
+@section('robots', count($actifs) || $tfes->currentPage() > 1 ? 'noindex, follow' : 'index, follow')
+@section('canonical', route('welcome'))
+@push('head')
+<script type="application/ld+json">{!! json_encode(['@context' => 'https://schema.org', '@type' => 'WebSite', 'name' => 'INSTI - Rapports de fin d’études', 'url' => route('welcome'), 'inLanguage' => 'fr', 'publisher' => ['@type' => 'CollegeOrUniversity', 'name' => 'Institut National Supérieur de Technologie Industrielle de Lokossa', 'url' => 'https://insti.edu.bj/']], JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}</script>
+@endpush
 @section('content')
+    <section class="hero">
+        <h1>Rapports et mémoires de fin d’études</h1>
+        <p>Consultez les travaux des étudiants de l’INSTI de Lokossa, par niveau, filière et année.</p>
+        <form class="search" method="GET" action="{{ route('welcome') }}" role="search">
+            @foreach (['niveau', 'filiere', 'annee', 'tri'] as $cle)@if (!empty($filtres[$cle]))<input type="hidden" name="{{ $cle }}" value="{{ $filtres[$cle] }}">@endif @endforeach
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input type="search" name="kw" value="{{ $filtres['kw'] ?? '' }}" maxlength="100" placeholder="Thème, auteur, encadrant, lieu de stage" aria-label="Rechercher">
+            <button class="btn btn-filled" type="submit">Rechercher</button>
+        </form>
+    </section>
 
- <h3 class="text-dark mb-4 ml-3">Acceuil</h3>
-<header id="" class="text-center">
+    <div class="stack">
+        <nav class="chips" aria-label="Niveau">
+            <a class="chip" @if (empty($filtres['niveau'])) aria-current="true" @endif href="{{ route('welcome', \Illuminate\Support\Arr::except($actifs, ['niveau', 'filiere'])) }}">Tous <span>{{ $parNiveau->sum() }}</span></a>
+            @foreach ($niveaux as $niveau)
+                <a class="chip" @if (($filtres['niveau'] ?? null) == $niveau->id) aria-current="true" @endif
+                    href="{{ route('welcome', ['niveau' => $niveau->id] + \Illuminate\Support\Arr::except($actifs, ['niveau', 'filiere'])) }}">{{ $niveau->nom }} <span>{{ $parNiveau[$niveau->id] ?? 0 }}</span></a>
+            @endforeach
+        </nav>
 
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-  </ol>
-  <div class="carousel-inner">
+        <form class="fields filters" method="GET" action="{{ route('welcome') }}" data-autosubmit>
+            @foreach (['kw', 'niveau'] as $cle)@if (!empty($filtres[$cle]))<input type="hidden" name="{{ $cle }}" value="{{ $filtres[$cle] }}">@endif @endforeach
+            <x-field name="filiere" label="Filière" type="select">
+                <option value="">Toutes les filières</option>
+                @foreach ($niveaux as $niveau)
+                    @if ((empty($filtres['niveau']) || $filtres['niveau'] == $niveau->id) && $niveau->filieres->count())
+                        <optgroup label="{{ $niveau->nom }}">
+                            @foreach ($niveau->filieres as $f)<option value="{{ $f->id }}" @if (($filtres['filiere'] ?? null) == $f->id) selected @endif>{{ $f->libelle }}</option>@endforeach
+                        </optgroup>
+                    @endif
+                @endforeach
+            </x-field>
+            <x-field name="annee" label="Année" type="select">
+                <option value="">Toutes les années</option>
+                @foreach ($annees as $annee)<option @if (($filtres['annee'] ?? null) == $annee) selected @endif>{{ $annee }}</option>@endforeach
+            </x-field>
+            <x-field name="tri" label="Trier par" type="select">
+                @foreach (\App\Models\Tfe::TRIS as $cle => $libelle)<option value="{{ $cle }}" @if (($filtres['tri'] ?? 'recent') === $cle) selected @endif>{{ $libelle }}</option>@endforeach
+            </x-field>
+            <button class="btn btn-filled" type="submit"><i class="fas fa-filter"></i>Appliquer</button>
+        </form>
 
- 
-        <div class="carousel-item active">
-        <img class="d-block w-100" src="{{asset('images/img7.jpg')}}" alt="First slide">
-                <div class="carousel-caption d-none d-md-block">
-                <h2 style="color:white">Tous les travaux de fin d'étude <br> à votre disposition.</h2>
-               <p><a href="#tfe" class="consult-btn">Consulter</a></p>
-                </div>
+        <div class="row between">
+            <span class="muted">{{ $tfes->total() }} {{ $tfes->total() > 1 ? 'rapports' : 'rapport' }}</span>
+            @if (count($actifs))<a class="btn btn-sm" href="{{ route('welcome') }}"><i class="fas fa-times"></i>Effacer les filtres</a>@endif
         </div>
-        <div class="carousel-item ">
-        <img class="d-block w-100" src="{{asset('images/img3.jpg')}}" alt="First slide">
-                <div class="carousel-caption d-none d-md-block">
-                <h2 style="color:white">Vous êtes étudiant ? <br> Inscrivez vous pour le depôt de votre tfe</h2>
-                @if(Auth::user()!=null)
 
-                <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white" href="/"><span>{{ __("S'inscrire") }}</span></a></p>
-                @else
-                <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white" href="{{ route('register') }}"><span>{{ __("S'inscrire") }}</span></a></p>
-
-                @endif
-                </div>
-        </div>
-        <div class="carousel-item ">
-        <img class="d-block w-100" src="{{asset('images/img6.jpg')}}" alt="First slide">
-                <div class="carousel-caption d-none d-md-block">
-                <h2 style="color:white">Vous êtes étudiant, <br> Et vous avez déjà un compte, Connectez vous.</h2>
-                @if(Auth::user()!=null)
-                  <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white" href="/"><span>{{ __("S'identifier") }}</span></a></p>
-                  @else
-                  <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white" href="{{ route('login') }}"><span>{{ __("S'identifier") }}</span></a></p>
-
-                  @endif
-                </div>
-        </div>
-        <div class="carousel-item ">
-        <img class="d-block w-100" src="{{asset('images/img5.jpg')}}" alt="First slide">
-                <div class="carousel-caption d-none d-md-block">
-                <h2 style="color:white">Vous êtes déja connecté?<br> Déposé votre tfe.</h2>
-                  <p><a class="btn" style="background-color:  rgb(0, 68, 255);color:white" href="{{ route('tfe.create') }}"><span>{{ __("Déposer") }}</span></a></p>
-                </div>
-        </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-   <div>
-        <p>
-           
-        </p>
-        
+        @if ($tfes->count())
+            <div class="grid">
+                @foreach ($tfes as $tfe)
+                    <article class="card report">
+                        <div class="chips"><x-niveau :tfe="$tfe" /><span class="tag">{{ $tfe->groupe_pedagogique }}</span></div>
+                        <h2><a href="{{ $tfe->url_publique }}">{{ $tfe->theme }}</a></h2>
+                        <div class="meta">{{ $tfe->auteurs }} · {{ $tfe->annee_de_realisation }}</div>
+                    </article>
+                @endforeach
+            </div>
+            {{ $tfes->links('vendor.pagination.m3') }}
+        @else
+            <div class="card empty"><i class="fas fa-search"></i><h2>Aucun rapport trouvé</h2><p>Essayez d’autres mots ou effacez les filtres.</p></div>
+        @endif
     </div>
-
-
-</header>
-<div class="container" id="tfe">
-    <div class="col">
-        <h1 class="text-center text-dark mb-4" style="font-style: normal;font-family: bold;">Les derniers tfes publiés</h1>
-         <div class="row">
-             @if(count($tfes)>0) 
-                @include('layouts.sidebar')
-             @endif                  
-         </div>
-
-          <div class="row row-cols-md-2 row-col-sm-2"> 
-        @forelse($tfes as $tfe)
-            <div class="col">
-                <div class="card mb-4 shadow">    
-                    <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col mr-4">
-                                 <div class="card-title text-dark"style="font-size: 20px"><span> {{ $tfe->theme }}</span></div>
-                                <div class="card-text text-dark"><span>Réalisé par {{ $tfe->auteurs }} en {{ $tfe->annee_de_realisation }}</span>
-                                </div>  
-                            </div>
-                            <div class="col-auto mr-4"> 
-                                <a href="{{ route('tfe.show', $tfe) }}"><img src="images/pdf.png" width="60px">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>    
-            </div>  
-     
-         @empty
-             <div class="text-center">
-                <h1 style="font-size: 30px;color: black;">Aucun tfe disponibles pour le moment</h1>
-             </div>
-         @endforelse
-     </div>
-</div>
-</div>
-@stop
-@section('footer')
-<footer>
-        <div class="container">
-            Copyright {{date('Y')}}
-        </div>
-</footer>
-
-
-@stop
+@endsection

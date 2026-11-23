@@ -23,6 +23,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \Illuminate\Support\Facades\Mail::extend('gmail-relais', function (array $config) {
+            return new \App\Services\GmailRelaisTransport($config['url'], $config['cle']);
+        });
+        \Illuminate\Support\Facades\Mail::extend('hebergeur', function (array $config) {
+            return new \App\Services\HebergeurTransport($config['path']);
+        });
     }
 }

@@ -14,6 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Aucune API publique : l'ancienne route par jeton a été retirée (contournement connu du TokenGuard de Laravel).

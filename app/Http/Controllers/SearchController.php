@@ -2,34 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tfe;
+use App\Models\Filiere;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 
-use function PHPUnit\Framework\isNan;
-
+/** Traduit les anciennes adresses /search?... vers les filtres de l'accueil. */
 class SearchController extends Controller
 {
-    public function search(Request $request){
-        $years = Tfe::years();
-        $kw = $request->input('search'); 
-        $tfes = [];
+    public function search(Request $request)
+    {
+        $groupe = $request->query('groupe_pedagogique');
+        $kw = $request->query('kw');
 
-       if($kw!=null){
-        if (is_numeric($kw)) {
-            $tfes = Tfe::searchByYear($kw)->get();
-        }
-        elseif(str_starts_with($kw, '@_')){
-            $kw = trim($kw, '@_');
-            $tfes = Tfe::searchByEntity($kw)->get();
-        }
-        else{
-            $tfes = Tfe::searchByTheme($kw)->get();
-        }
-        return view('search', compact('tfes', 'years', 'kw'));
-       }
-       else{
-           return Redirect()->back();
-       }
+        return redirect()->route('welcome', array_filter([
+            'kw' => is_string($kw) ? mb_substr($kw, 0, 100) : null,
+            'annee' => (int) $request->query('annee_de_realisation') ?: null,
+            'filiere' => is_string($groupe) ? Filiere::where('nom', trim($groupe, '@_'))->value('id') : null,
+        ]), 301);
     }
 }

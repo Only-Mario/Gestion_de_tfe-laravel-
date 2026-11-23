@@ -11,3 +11,9 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+# Exports de base et données personnelles : jamais dans git
+/*.sql
+/members.txt
+*.bak
+/bootstrap/cache/*.php

@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
+use App\Mail\MessageInsti;
+use App\Services\Courriel;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
@@ -15,9 +16,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        Registered::class => [
-            SendEmailVerificationNotification::class,
-        ],
+
     ];
 
     /**
@@ -27,6 +26,14 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Le lien reçu par email prouve que l'adresse est bien celle de l'utilisateur.
+        Event::listen(PasswordReset::class, function ($event) {
+            $event->user->forceFill(['email_verified_at' => $event->user->email_verified_at ?: now()])->save();
+            Courriel::envoyer($event->user->email, new MessageInsti('Votre mot de passe a changé', 'Mot de passe réinitialisé', [
+                "Bonjour {$event->user->name},",
+                'Votre mot de passe vient d’être réinitialisé.',
+                'Si ce n’est pas vous, contactez immédiatement l’administration de l’INSTI.',
+            ]));
+        });
     }
 }

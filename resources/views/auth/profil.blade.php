@@ -1,159 +1,35 @@
 @extends('layouts.app')
-
+@section('title', $user->is_admin ? 'Mon compte' : 'Mes documents')
 @section('content')
-<div>
-    <div class="container-fluid">
-        <!-- **********- -->
-        <h3 class="text-dark mb-4-m-8">Profile</h3>
-        <div class="row">
-           <div class="card-body text-center"><img class="rounded-circle mb-3 mt-4" src="{{asset('images/account.jpg')}}" width="160" height="160" />
-             <div class="mb-3">
-                <button class="btn btn-primary" type="button" onclick="event.preventDefult; alert('Vous ne pouvez éditer votre profil');">
-                    <a href="" style="color: white;">Editer le Profil</a>
-                </button>
-                @if($tfe!=null and $tfe->status==0)
-                <button class="btn btn-primary" type="button" >
-                    <a href="{{ route('editTfe',$tfe->id)}}" style="color: white;">Editer le Tfe</a></button>
-               @endif 
-            </div>
-        </div>
+    <div class="page-head"><div><h1>{{ $user->is_admin ? 'Mon compte' : 'Mes documents' }}</h1><p>{{ $user->name }}</p></div>
+        @if (!$user->is_admin)<a class="btn btn-filled" href="{{ route('tfe.create') }}"><i class="fas fa-plus"></i>Ajouter un document</a>@endif
     </div>
-    <!-- **********- -->
-
-    <div class="card shadow mb-3">
-        <div class="card-header" style="background-color: #4169e1;">
-           <p class="m-0 font-weight-bold text-center" style="font-size: 20px;color: white;">Informations personnelles</p>
-       </div>
-       <div class="card-body">
-        <div class="form-group row">
-            <div class="col-sm-6 mb-3 mb-sm-0">
-                <div class="mb-4">
-                    <label>{{__('Nom complet')}}</label>
-                    <input type="text" class="form-control" name="name" disabled="true" value="{{$user->name }}" disabled="true"/>
+    @if (session('recu'))
+        <section class="card receipt"><div><h2>Votre reçu est prêt</h2><p>Il porte votre numéro matricule et un code de vérification.</p></div><a class="btn btn-filled" href="{{ route('tfe.attestation', session('recu')) }}"><i class="fas fa-receipt"></i>Télécharger le reçu</a></section>
+    @endif
+    <div class="stack">
+        @foreach ($tfes as $tfe)
+            <article class="card">
+                <div class="chips"><x-niveau :tfe="$tfe" /><x-statut :tfe="$tfe" /><span class="tag">{{ $tfe->filiere ? $tfe->filiere->libelle : $tfe->groupe_pedagogique }}</span></div>
+                <h2 style="margin:14px 0 6px">{{ $tfe->theme }}</h2>
+                <p class="muted">{{ $tfe->auteurs }} · {{ $tfe->annee_de_realisation }} · déposé le {{ optional($tfe->created_at)->format('d/m/Y') }}</p>
+                @if ((int) $tfe->status === 2)<div class="alert alert-bad"><i class="fas fa-times-circle"></i><span>{{ $tfe->motif_rejet ?: 'Document rejeté.' }} Contactez l’administration pour la suite.</span></div>@endif
+                <div class="row">
+                    <a class="btn btn-tonal btn-sm" href="{{ route('tfe.show', $tfe) }}"><i class="fas fa-file-pdf"></i>Ouvrir le PDF</a>
+                    <a class="btn btn-outlined btn-sm" href="{{ route('tfe.attestation', $tfe->id) }}"><i class="fas fa-receipt"></i>Reçu</a>
+                    <form class="inline" method="POST" action="{{ route('tfe.recu', $tfe->id) }}">@csrf<button class="btn btn-sm" type="submit"><i class="fas fa-envelope"></i>Reçu par email</button></form>
+                    @if ($tfe->isEditableBy($user))<a class="btn btn-sm" href="{{ route('editTfe', $tfe->id) }}"><i class="fas fa-edit"></i>Modifier</a>@endif
                 </div>
-                <div>
-                    <label>{{__('Filière')}}</label>
-                    <input class="form-control" value="{{$user->entity}}" disabled="true" id="entity">
-                </div>
-
-            </div>
-
-            <div class="col-sm-6 mb-3 mb-sm-0">
-                <div class="mb-4">
-                    <label>{{__('N° Matricule')}}</label>
-                    <input class="form-control" value="{{ $user->matricule}}" disabled="true">
-                </div>
-                <div>
-                   <label>{{__('Année d\'étude')}}</label>
-                   <input type="text" class="form-control" value="{{$user->study_year}}" disabled="true" />  
-
-               </div>
-           </div>
-       </div>
-       <div class="form-group">
-        <label>{{__('N° d\'enrégistrement')}}</label>
-        <input type="email" class="form-control" value="{{ $user==null? : $user->id}}"  disabled="true">
+            </article>
+        @endforeach
+        @if ($tfes->isEmpty() && !$user->is_admin)
+            <div class="card empty"><i class="fas fa-folder-open"></i><h2>Aucun document déposé</h2><p>Commencez par choisir votre niveau et votre filière.</p><a class="btn btn-filled" href="{{ route('tfe.create') }}">Ajouter un document</a></div>
+        @endif
+        <section class="card"><h2>Informations personnelles</h2>
+            <dl class="info"><dt>Nom</dt><dd>{{ $user->name }}</dd><dt>Email</dt><dd>{{ $user->email }} <a class="tag {{ $user->email_verified_at ? 'tag-ok' : 'tag-wait' }}" href="{{ route('email.confirmer') }}">{{ $user->email_verified_at ? 'Confirmée' : 'À confirmer' }}</a></dd>
+                @if (!$user->is_admin)<dt>Matricule</dt><dd>{{ $user->matricule }}</dd><dt>Niveau</dt><dd>{{ optional($user->niveau)->nom ?: '-' }}</dd><dt>Filière</dt><dd>{{ $user->entity }}</dd><dt>Année d’étude</dt><dd>{{ $user->study_year ? \App\Models\Niveau::libelleAnnee($user->study_year) : '-' }}</dd>@endif
+            </dl>
+            @if (!$user->is_admin)<div class="actions"><a class="btn btn-outlined" href="{{ route('profil.edit') }}"><i class="fas fa-edit"></i>Modifier mon profil</a></div>@endif
+        </section>
     </div>
-</div>
-</div>  
-<!-- **********- -->
-@if($tfe!=null)
-<div class="row mb-3 text-center">
-    <div class="col">
-
-        <div class="card shadow">
-            <div class="card-header" style="background-color: #4169e1;">
-                <p class="m-0 font-weight-bold text-center" style="font-size: 20px;color: white;">Tfe infos 1</p>
-            </div>
-            <div class="card-body">
-                <form>
-                 <div class="form-group">
-                  <label for="enregistrement"><strong>{{ __('Numéro d\'enrégistrement') }}</strong>
-                  </label>
-                  <input type="text" class="form-control" name="enregistrement" disabled="true" value="{{$tfe->id}}" />
-
-              </div>
-              <div class="form-group">
-                  <label for="theme"><strong>Thème</strong></label><input type="text" disabled="true" class="form-control" name="theme" value="{{$tfe->theme}}" />
-              </div>
-              <div class="form-group">
-                <label for="auteur"><strong>Auteur</strong></label>
-                <input type="text" class="form-control" name="auteur" disabled="true" value="{{$tfe->auteurs}}"/>
-            </div>
-            <div class="form-row">
-                <div class="col">
-                    <div class="form-group">
-                        <label for="annee"><strong>Année</strong></label>
-                        <input type="text" class="form-control" disabled="true" name="annee" value="{{$tfe->annee_de_realisation}}" />
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="filiere"><strong>Filière</strong></label>
-                        <input type="text" name="filiere" disabled="true" value="{{$tfe->groupe_pedagogique}}">
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-</div>
-<!-- **********- -->
-<div class="col">
-    <div class="card shadow mb-3">
-        <div class="card-header py-3" style="background-color: #4169e1;">
-            <p class="m-0 font-weight-bold text-center" style="font-size: 20px;color: white;">Tfe infos 2</p>
-        </div>
-        <div class="card-body">
-            <form>
-                <div class="form-row">
-                    <div class="col">
-                        <div class="form-group"><label for="username">
-                            <strong>Tuteur de Stage</strong></label><input type="text" class="form-control" name="username" value="{{$tfe->tuteur_de_stage}}" disabled="true"/>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="email"><strong>Email Tuteur de stage</strong></label><input type="email" class="form-control" name="email" value="{{$tfe->email_tuteur}}"  disabled="true"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col">
-                        <div class="form-group"><label for="first_name"><strong>Maitre memoire</strong></label><input type="text" class="form-control" name="first_name" value="{{$tfe->maitre_memoire}}"  disabled="true"/></div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group"><label for="last_name"><strong>Email Maitre memoire</strong>
-                        </label><input type="text" class="form-control"  name="last_name" value="{{$tfe->email_maitre_memoire}}"  disabled="true"/>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="stage_lieu"><strong>Lieu de stage</strong></label><input type="text" class="form-control" name="stage_lieu" value="{{$tfe->lieu_de_stage}}"  disabled="true"/>
-            </div>
-            <div class="form-group">
-                <label for="date"><strong>Status</strong></label><input type="text" class="form-control" name="date" disabled value="{{$status}}"  disabled="true"/>
-            </div>
-        </form>
-    </div>
-</div>
-</div>
-</div>
-@endif
-@if($tfe==null)
-<div class="card shadow text-center mt-4">
-    <div class="card-body">
-        <h1 style="" class="text-info">Vous n'avez pas soumis votre tfe</h1>
-    </div>
-</div>
-@endif
-</div>
-</div>
 @endsection
-<style>
-   @media(max-width: 45rem){
-    .col{
-        margin: 5px;
-    }
-   }
-</style>

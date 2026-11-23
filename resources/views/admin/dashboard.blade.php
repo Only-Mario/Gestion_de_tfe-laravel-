@@ -1,200 +1,65 @@
-
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>{{ config('app.name', 'Gestion des tfe') }}</title>
-    <link rel="stylesheet" href="{{asset('css/assets/bootstrap/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="{{asset('css/assets/css/Navigation-Clean.css')}}">
-    <link rel="stylesheet" href="{{asset('css/assets/fonts/fontawesome-all.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/assets/css/styles.css')}}">
-    <link rel="stylesheet" type="text/css" href="css/assets/css/style.css">
-</head>
-
-<body>
-    <nav class="navbar navbar-light navbar-expand-md navigation-clean shadow fixed-top">
-        <div class="container"><a class="navbar-brand" href="#">Administration</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-            id="navcol-1">
-            <ul class="nav navbar-nav ml-auto">
-               
-                <li class="nav-item" role="presentation"><a class="nav-link active border-primary" data-bs-hover-animate="flash" href="{{route('dashboard')}}">Tableau de Bord</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="flash" href="{{route('store')}}">Utilisateurs</a></li>
-                
-                <li class="nav-item" role="presentation"> <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                            document.getElementById('a1dmin-logout-form').submit();">
-                    {{ __('Se Déconnecter') }}
-                </a>
-                <form id="a1dmin-logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                   @csrf
-               </form>
-              </li>
-            </ul>
+@extends('layouts.admin')
+@section('title', 'Documents')
+@php($params = array_filter(['q' => $q] + $filtres))
+@section('content')
+    <div class="page-head"><div><h1>Documents</h1><p>Validation, recherche et suivi des dépôts.</p></div>
+        <a class="btn btn-outlined" href="{{ route('export', ['status' => $status] + $params) }}"><i class="fas fa-file-excel"></i>Exporter (CSV)</a></div>
+    <div class="stack">
+        <div class="grid-2">
+            @foreach ([['file-alt', 'Documents', $stats['total_tfe']], ['hourglass-half', 'À valider', $counts[0]], ['calendar-alt', 'Déposés ce mois', $stats['mois']], ['user-graduate', 'Étudiants', $stats['students']]] as $s)
+                <div class="card stat"><i class="fas fa-{{ $s[0] }}" aria-hidden="true"></i><span><b>{{ number_format($s[2], 0, ',', ' ') }}</b><span class="muted small">{{ $s[1] }}</span></span></div>
+            @endforeach
         </div>
-    </div>
-</nav>
-<div class="container" style="margin-top: 100px;">
-<div class="container">
-        @include('flash::message')
-      </div>   
-    <div class="col">
-        <div class="row">
-            <div class="col">
-                <div class="card mt-4 mb-4 bg-dark">
-                    <div class="card-body">
-                        <h4 class="card-title"></h4>
-                        <div class="row">
-                            <div class="col align-content-center" style="border-right:2px solid white;"><label class="col-form-label text-light align-content-center">THEME</label></div>
-                            <div class="col align-content-center" style="border-right:2px solid white;"><label class="col-form-label text-light align-content-center">AUTEURS</label></div>
-                            <div class="col align-content-center" style="border-right:2px solid white;"><label class="col-form-label align-content-center text-light align-content-center">GROUPE PEDAGODIQUE</label></div>
-                            <div class="col align-content-center" style="border-right:2px solid white;"><label class="col-form-label text-light align-content-center">ANNEE DE REALISATION</label></div>
-                            <div class="col align-content-center" style="border-right:2px solid white;"><label class="col-form-label text-light align-content-center">LIEU DE STAGE</label></div>
-                            <div class="col align-content-center" style="border-right:2px solid white;"><label class="col-form-label text-light align-content-center">MAITRE MEMOIRE<br /></label></div>
-                            <div class="col align-content-center" style="border-right:2px solid white;"><label class="col-form-label text-light align-content-center">EMAIL MAITRE MEMOIRE</label></div>
-                            <div class="col align-content-center" style="border-right:2px solid white;"><label class="col-form-label text-light align-content-center">DOCUMENT</label></div>
-                            <div class="col align-content-center"><label class="col-form-label text-light align-content-center">STATUS</label></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                         <h3 class="text-dark text-center">Les tfe en attente</h3>
-                    </div>   
-                </div>
-                @if(count($tfes0)>0)
-                <div class="row m-3">
-                    <div class="col text-center">
-                        <a href="{{route('status',['id'=>-1,'status'=>1])}}">
-                       <button class="btn btn-success" onclick="return confirm('Cette action est irréversible. Voulez vous poursuivre ?');">
-                        TOUT VALIDER
-                       </button>
-                       </a>
-                       <a href="{{route('status',['id'=>-1,'status'=>2])}}" onclick="return confirm('Cette action est irréversible. Voulez vous poursuivre ?');">
-                       <button class="btn btn-danger">
-                        TOUT REFUSER
-                       </button>
-                       </a> 
-                   </div>
-                </div>
-                 @endif 
-                 
-                @forelse($tfes0 as $tfe)
-                <div class="card" style="border-bottom: 2px solid black;">
-                    <div class="card-body">
-                        <h4 class="card-title"></h4>
-                        <div class="row">
-                            <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->theme}}</label></div>
-                            <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->auteurs}}</label></div>
-                            <div class="col align-content-center"><label class="col-form-label align-content-center align-content-center">{{$tfe->groupe_pedagogique}}</label></div>
-                            <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->annee_de_realisation}}</label></div>
-                            <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->lieu_de_stage}}</label></div>
-                            <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->maitre_memoire}}<br /></label></div>
-                            <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->email_maitre_memoire}}</label></div>
-                            <div class="col align-content-center"> <a class="col-form align-content-center" href="{{ route('tfe.show', $tfe) }}"><img src="{{asset('images/pdf.png')}}" width="60px"></a></div>
-                            <div class="col">
-                                <div class="row">
-                                    <div class="col mb-4">
-                                         <a href="{{route('status',['id'=>$tfe->id,'status'=>1])}}">
-                                       <button class="btn btn-success" onclick="return confirm('Cette action est irréversible. Voulez vous poursuivre ?');">
-                                        VALIDER
-                                       </button>
-                                       </a>
-                                    </div>
-                                    <div class="col">
-                                          <a href="{{route('status',['id'=>$tfe->id,'status'=>2])}}">
-                                       <button class="btn btn-danger" onclick="return confirm('Cette action est irréversible. Voulez vous poursuivre ?');">
-                                       REFUSER
-                                       </button>
-                                       </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @empty
-                    <div class="text-center"><i>Aucun TFE n'a été soumit</i></div>
-                @endforelse
-                <h3 class="text-dark text-center">Les tfe validés</h3>
-                @forelse($tfes1 as $tfe)
-                <div class="card" style="border-bottom: 2px solid black;">
-                    <div class="card-body">
-                        <h4 class="card-title"></h4>
-                        <div class="row">
-                            <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->theme}}</label></div>
-                            <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->auteurs}}</label></div>
-                            <div class="col align-content-center"><label class="col-form-label align-content-center align-content-center">{{$tfe->groupe_pedagogique}}</label></div>
-                            <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->annee_de_realisation}}</label></div>
-                            <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->lieu_de_stage}}</label></div>
-                            <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->maitre_memoire}}<br /></label></div>
-                            <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->email_maitre_memoire}}</label></div>
-                            <div class="col align-content-center"> <a class="col-form align-content-center" href="{{ route('tfe.show', $tfe) }}"><img src="{{asset('images/pdf.png')}}" width="60px"></a></div>
-                            <div class="col">
-                                <div class="row">
-                                   <img src="{{asset('images/valider.jpg')}}" width="60px">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @empty
-                     <div class="text-center"><i>Aucun</i></div>
-                @endforelse
-                <div class="row">
-                   <div class="col">
-                       <h3 class="text-dark text-center mt-4">Les tfe refusés</h3>
-                   </div> 
-                </div>   
-                 @if(count($tfes2)>0)
-                <div class="row mb-3">
-                    <div class="col text-center">
-                        <a href="{{route('status',['id'=>0,'status'=>-2])}}" >
-                       <button class="btn btn-success "  onclick="return confirm('Cette action est irréversible. Voulez vous supprimer ces éléments ?');">
-                        TOUT SUPPRIMER
-                       </button>
-                       </a>
-                   </div>
-                </div>
-                 @endif 
-                @forelse($tfes2 as $tfe)
-                <div class="card mb-4" style="border-bottom: 2px solid black;">
-                    <div class="card-body">
-                        <h4 class="card-title"></h4>
-                        <div class="row">
-                            <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->theme}}</label></div>
-                            <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->auteurs}}</label></div>
-                            <div class="col align-content-center"><label class="col-form-label align-content-center align-content-center">{{$tfe->groupe_pedagogique}}</label></div>
-                            <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->annee_de_realisation}}</label></div>
-                            <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->lieu_de_stage}}</label></div>
-                            <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->maitre_memoire}}<br /></label></div>
-                            <div class="col align-content-center"><label class="col-form-label align-content-center">{{$tfe->email_maitre_memoire}}</label></div>
-                            <div class="col align-content-center"> <a class="col-form align-content-center" href="{{ route('tfe.show', $tfe) }}"><img src="{{asset('images/pdf.png')}}" width="60px"></a></div>
-                            <div class="col">
-                                <div class="row">
-                                   <a href="{{route('status',['id'=>$tfe->id,'status'=>-3])}}" onclick="return confirm('Cette action est irréversible. Voulez vous poursuivre ?');" ><img src="{{asset('images/refuser.png')}}" width="60px"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @empty
-                   <div class="text-center"><i>Vide</i></div>
-                @endforelse
-            </div>
+        <div class="grid-2">
+            <section class="card"><h2>Par niveau</h2>@foreach ($niveaux as $n)<div class="bar"><span>{{ $n->nom }}</span><progress max="{{ max(1, $stats['total_tfe']) }}" value="{{ $parNiveau[$n->id] ?? 0 }}"></progress><span>{{ $parNiveau[$n->id] ?? 0 }}</span></div>@endforeach</section>
+            <section class="card"><h2>Par filière</h2>@foreach ($parFiliere as $nom => $total)<div class="bar"><span>{{ $nom }}</span><progress max="{{ max(1, $parFiliere->max()) }}" value="{{ $total }}"></progress><span>{{ $total }}</span></div>@endforeach</section>
         </div>
+        <section class="card stack">
+            <nav class="chips" aria-label="Statut">
+                @foreach ([0 => 'À valider', 1 => 'Publiés', 2 => 'Rejetés'] as $v => $l)<a class="chip" @if ($status === $v) aria-current="true" @endif href="{{ route('dashboard', ['status' => $v] + $params) }}">{{ $l }} <span>{{ $counts[$v] }}</span></a>@endforeach
+            </nav>
+            <form class="fields" method="GET" action="{{ route('dashboard') }}" data-autosubmit>
+                <input type="hidden" name="status" value="{{ $status }}">
+                <x-field name="q" label="Recherche" type="search" :value="$q" placeholder="Étudiant, matricule, thème" />
+                <x-field name="niveau" label="Niveau" type="select"><option value="">Tous</option>@foreach ($niveaux as $n)<option value="{{ $n->id }}" @if ($filtres['niveau'] == $n->id) selected @endif>{{ $n->nom }}</option>@endforeach</x-field>
+                <x-field name="filiere" label="Filière" type="select"><option value="">Toutes</option>@foreach ($niveaux as $n)<optgroup label="{{ $n->nom }}">@foreach ($n->filieres as $f)<option value="{{ $f->id }}" @if ($filtres['filiere'] == $f->id) selected @endif>{{ $f->libelle }}</option>@endforeach</optgroup>@endforeach</x-field>
+            </form>
+            @if ($status === 0 && $counts[0])
+                <div class="row"><form class="inline" method="POST" action="{{ route('status', ['id' => -1, 'status' => 1]) }}" data-confirm="Valider les {{ $counts[0] }} documents en attente ?">@csrf<button class="btn btn-tonal btn-sm" type="submit">Tout valider</button></form></div>
+            @elseif ($status === 2 && $counts[2])
+                <form class="inline" method="POST" action="{{ route('status', ['id' => 0, 'status' => -2]) }}" data-confirm="Supprimer définitivement les {{ $counts[2] }} documents rejetés, leurs fichiers et leurs anciennes versions ?">@csrf<button class="btn btn-danger btn-sm" type="submit">Supprimer tous les rejetés</button></form>
+            @endif
+            <div class="table-wrap"><table>
+                <thead><tr><th>Étudiant</th><th>Niveau</th><th>Thème</th><th>Déposé le</th><th><span class="sr">Actions</span></th></tr></thead>
+                <tbody>
+                @forelse ($tfes as $tfe)
+                    <tr>
+                        <td data-l="Étudiant">{{ optional($tfe->user)->name ?: '-' }}<br><span class="muted small">{{ optional($tfe->user)->matricule }}</span></td>
+                        <td data-l="Niveau"><x-niveau :tfe="$tfe" /><br><span class="muted small">{{ $tfe->groupe_pedagogique }}</span></td>
+                        <td class="wide" data-l="Thème">{{ $tfe->theme }}
+                            @if ($tfe->motif_rejet)<p class="small" style="color:var(--error)">Rejet : {{ $tfe->motif_rejet }}</p>@endif
+                            @foreach ($tfe->modifications as $m)
+                                <div class="small muted">Modifié le {{ $m->created_at->format('d/m/Y H:i') }} : {{ $m->motif }} · <a href="{{ route('justificatif', $m->id) }}" target="_blank" rel="noopener">Justificatif</a>
+                                    <form class="inline" method="POST" action="{{ route('restaurer', $m->id) }}" data-confirm="Rétablir la version d'avant cette modification ?">@csrf<button class="btn btn-sm" type="submit">Rétablir la version d’avant</button></form></div>
+                            @endforeach
+                        </td>
+                        <td data-l="Déposé le">{{ optional($tfe->created_at)->format('d/m/Y') }}</td>
+                        <td class="acts">
+                            <a class="icon-btn" href="{{ route('tfe.show', $tfe) }}" target="_blank" rel="noopener" title="Voir le PDF" aria-label="Voir le PDF"><i class="fas fa-file-pdf"></i></a>
+                            <a class="icon-btn" href="{{ route('editTfe', $tfe->id) }}" title="Modifier" aria-label="Modifier"><i class="fas fa-edit"></i></a>
+                            @if ($status !== 1)<form class="inline" method="POST" action="{{ route('status', ['id' => $tfe->id, 'status' => 1]) }}" data-confirm="Publier ce document ?">@csrf<button class="icon-btn ok" type="submit" title="Publier" aria-label="Publier"><i class="fas fa-check"></i></button></form>@endif
+                            @if ($status !== 2)<button class="icon-btn bad" type="button" title="Rejeter" aria-label="Rejeter" data-dialog="rejet" data-action="{{ route('status', ['id' => $tfe->id, 'status' => 2]) }}"><i class="fas fa-times"></i></button>@else
+                                <form class="inline" method="POST" action="{{ route('status', ['id' => $tfe->id, 'status' => -3]) }}" data-confirm="Supprimer définitivement ce document ?">@csrf<button class="icon-btn bad" type="submit" title="Supprimer" aria-label="Supprimer"><i class="fas fa-trash"></i></button></form>@endif
+                        </td>
+                    </tr>
+                @empty
+                    <tr><td colspan="5" class="empty">Aucun document ici.</td></tr>
+                @endforelse
+                </tbody></table></div>
+            {{ $tfes->links('vendor.pagination.m3') }}
+        </section>
     </div>
-</div>
-<footer>
-
-</footer>
-<script src="{{asset('css/assets/js/jquery.min.js')}}"></script>
-<script src="{{asset('css/assets/bootstrap/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('css/assets/js/bs-init.js')}}"></script>
-<script src="{{asset('css/assets/js/index.js')}}"></script>
-</body>
-
-</html>
+    <dialog id="rejet"><h2>Rejeter le document</h2><form method="POST" action="">@csrf
+        <x-field name="motif_rejet" label="Motif, visible par l’étudiant" type="textarea" maxlength="1000" required />
+        <div class="actions"><button class="btn" type="button" data-close>Annuler</button><button class="btn btn-danger" type="submit">Rejeter</button></div></form></dialog>
+@endsection

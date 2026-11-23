@@ -22,7 +22,7 @@ class CreateTfesTable extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('auteurs');
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(1);
             $table->string('annee_de_realisation');
             $table->string('groupe_pedagogique');
             $table->string('tuteur_de_stage');

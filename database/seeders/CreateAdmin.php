@@ -3,7 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\User;
+use App\Models\User;use Illuminate\Support\Str;
+
 class CreateAdmin extends Seeder
 {
     /**
@@ -13,12 +14,13 @@ class CreateAdmin extends Seeder
      */
     public function run()
     {
-         $user=[
-           'name'=>'Admin',
-           'password'=>bcrypt('institfeadmin'),
-           'email'=>'institfeadmin@gmail.com',
-           'is_admin'=>true,
+        $user=[
+            'name'=>'Admin',
+            'password'=>bcrypt(env('ADMIN_PASSWORD') ?: Str::random(32)),
+            'email'=>'institfeadmin@gmail.com',
         ];
-        User::create($user);
+        $admin = new User($user);
+        $admin->is_admin = true;
+        $admin->save();
     }
 }

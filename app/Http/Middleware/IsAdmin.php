@@ -24,9 +24,9 @@ class IsAdmin
                      return $next($request);
                 }    
             } 
-            return redirect('welcome')->with('error',"You don't have admin access");
+            return redirect()->route('welcome')->with('error',"You don't have admin access");
         } catch (Exception $e) {
-            return redirect('welcome')->with('error',"You don't have admin access");
+            return redirect()->route('welcome')->with('error',"You don't have admin access");
         }
         
     }

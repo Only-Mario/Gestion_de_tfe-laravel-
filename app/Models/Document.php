@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Document extends Model
 {
@@ -18,11 +20,16 @@ class Document extends Model
         return $this->belongsTo('App\Models\Tfe');
     }
 
-    public static function getName($request){
-        // Generate file name
-        $name = strtoupper($request->input('theme'));
-        $name = str_replace(' ', '_', $name);
-        $name = $name. '.pdf'; 
-        return $name;
+    /** Nom unique et sans caractère spécial, pour éviter écrasements et sous-dossiers. */
+    public static function generateFileName($theme){
+        return trim(Str::limit(Str::slug($theme), 100, '') . '-' . Str::uuid(), '-') . '.pdf';
+    }
+
+    /** D'anciens dépôts peuvent partager le même fichier : ne pas le supprimer dans ce cas. */
+    public static function deleteFileIfUnused($path){
+        if ($path && !self::where('path', $path)->exists()
+            && !TfeModification::where('ancien_document_path', $path)->exists()) {
+            Storage::delete($path);
+        }
     }
 }

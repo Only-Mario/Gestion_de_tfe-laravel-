@@ -43,31 +43,9 @@ class LoginController extends Controller
         
     }
 
-    public function showAdminLoginForm()
+    /** Le trait limite les essais et renouvelle la session ; ici, seule la destination change. */
+    protected function authenticated(Request $request, $user)
     {
-        return view('admin.login', ['url' => 'admin']);
+        return redirect()->intended($user->is_admin ? route('dashboard') : route('profil'));
     }
-
-    public function login(Request $request)
-    {
-
-         $input=$request->all();
-          $this->validate($request,[
-            'email'=>'required|email',
-            'password'=>'required',
-          ]);
-          if(Auth::attempt(array('email'=>$input['email'],'password'=>$input['password'])))
-          {
-            if(Auth::user()->is_admin==1){
-                return redirect()->route('dashboard');
-            }
-            else{
-                 return redirect()->route('welcome');
-            }
-          }
-          else{
-            return redirect()->route('login')->with('error','Email or Password is not correct');
-          }
-    }
-
 }

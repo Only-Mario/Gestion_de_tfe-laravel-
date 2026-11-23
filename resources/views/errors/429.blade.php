@@ -1,0 +1,3 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>Trop de tentatives | INSTI</title><link rel="stylesheet" href="{{ \App\Http\Controllers\RessourceController::url('style') }}"></head>
+<body><main class="content"><section class="card auth empty"><span class="tag tag-info">Erreur 429</span><h1 style="margin:16px 0">Trop de tentatives</h1><p>Patientez une minute avant de réessayer.</p><a class="btn btn-filled" href="{{ url('/') }}">Retour à l’accueil</a></section></main></body></html>
